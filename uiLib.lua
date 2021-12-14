@@ -1,3 +1,6 @@
+local function stringtocolor(str)
+    return Color3.fromRGB(table.unpack(str:gsub(" ",""):split(",")))
+end
 -- init
 local player = game.Players.LocalPlayer
 local mouse = player:GetMouse()
