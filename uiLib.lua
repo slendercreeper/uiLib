@@ -337,7 +337,7 @@ do
 				Size = UDim2.new(0, 24, 0, 24),
 				ZIndex = 3,
 				Image = "rbxassetid://" .. tostring(icon),
-				ImageColor3 = Color3.new(255,255,255),
+				ImageColor3 = Color3.fromRGB(255,255,255),
 				ImageTransparency = 0.64,
 				ScaleType = Enum.ScaleType.Fit
 			}) or {}
