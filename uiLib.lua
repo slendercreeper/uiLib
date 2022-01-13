@@ -219,7 +219,7 @@ do
 			utility:Create("ImageLabel", {
 				Name = "Main",
 				BackgroundTransparency = 1,
-				Position = UDim2.new(0.25, 0, 0.052435593, 0),
+				Position = UDim2.new(0.5, -335.75, 0.5, -226),
 				Size = UDim2.new(0, 671.5, 0, 415),
 				Image = "rbxassetid://4641149554",
 				ImageColor3 = themes.Background,
@@ -474,7 +474,7 @@ do
 		
 		if self.position then
 			utility:Tween(container, {
-				Size = UDim2.new(0, 511, 0, 428),
+				Size = UDim2.new(0, 671.5, 0, 415),
 				Position = self.position
 			}, 0.2)
 			wait(0.2)
@@ -492,8 +492,8 @@ do
 			wait(0.2)
 			
 			utility:Tween(container, {
-				Size = UDim2.new(0, 511, 0, 0),
-				Position = self.position + UDim2.new(0, 0, 0, 428)
+				Size = UDim2.new(0, 671.5, 0, 0),
+				Position = self.position + UDim2.new(0, 0, 0, 415)
 			}, 0.2)
 			wait(0.2)
 		end
@@ -2151,9 +2151,11 @@ do
 		
 		local frame = dropdown.List.Frame
 		
-		utility:Tween(dropdown, {Size = UDim2.new(1, 0, 0, (entries == 0 and 40) or math.clamp(entries, 0, 3) * 34 + 38)}, 0.3)
+		utility:Tween(dropdown, {Size = UDim2.new(1, 0, 0, (entries == 0 and 30) or math.clamp(entries, 0, 3) * 34 + 38)}, 0.3)
 		utility:Tween(dropdown.Search.Button, {Rotation = list and 180 or 0}, 0.3)
-		
+		if entries == 0 then
+		utility:Tween(dropdown, {Size = UDim2.new(1, 0, 0, 40)}, 0.3)
+		end
 		if entries > 3 then
 		
 			for i, button in pairs(dropdown.List.Frame:GetChildren()) do
