@@ -242,7 +242,7 @@ do
 					BackgroundTransparency = 1,
 					ClipsDescendants = true,
 					Position = UDim2.new(0, 0, 0, 38),
-					Size = UDim2.new(0, 126, 1, -38),
+					Size = UDim2.new(0, 150, 1, -38),
 					ZIndex = 3,
 					Image = "rbxassetid://5012534273",
 					ImageColor3 = themes.DarkContrast,
