@@ -257,7 +257,8 @@ do
 						Size = UDim2.new(1, 0, 1, -20),
 						CanvasSize = UDim2.new(0, 0, 0, 314),
 						ScrollBarThickness = 3,
-						ScrollBarImageColor3 = themes.Background
+						ScrollBarImageColor3 = themes.Background,
+						ZIndex = 3
 					}, {
 						utility:Create("UIListLayout", {
 							SortOrder = Enum.SortOrder.LayoutOrder,
