@@ -186,7 +186,7 @@ do
 		input.InputChanged:Connect(function(input)
 			if input == dragInput and dragging then
 				local delta = input.Position - mousePos
-				parent.Position  = UDim2.new(framePos.X.Scale, framePos.X.Offset + delta.X, framePos.Y.Scale, framePos.Y.Offset + delta.Y)
+				utility:Tween(parent, {Position = UDim2.new(framePos.X.Scale, framePos.X.Offset + delta.X, framePos.Y.Scale, framePos.Y.Offset + delta.Y)}, 0.2)
 			end
 		end)
 
@@ -220,7 +220,7 @@ do
 				Name = "Main",
 				BackgroundTransparency = 1,
 				Position = UDim2.new(0.25, 0, 0.052435593, 0),
-				Size = UDim2.new(0, 511, 0, 428),
+				Size = UDim2.new(0, 671.5, 0, 415),
 				Image = "rbxassetid://4641149554",
 				ImageColor3 = themes.Background,
 				ScaleType = Enum.ScaleType.Slice,
@@ -242,7 +242,7 @@ do
 					BackgroundTransparency = 1,
 					ClipsDescendants = true,
 					Position = UDim2.new(0, 0, 0, 38),
-					Size = UDim2.new(0, 126, 1, -38),
+					Size = UDim2.new(0, 150, 1, -38),
 					ZIndex = 3,
 					Image = "rbxassetid://5012534273",
 					ImageColor3 = themes.DarkContrast,
@@ -254,9 +254,12 @@ do
 						Active = true,
 						BackgroundTransparency = 1,
 						Position = UDim2.new(0, 0, 0, 10),
-						Size = UDim2.new(1, 0, 1, -20),
-						CanvasSize = UDim2.new(0, 0, 0, 314),
-						ScrollBarThickness = 0
+						Size = UDim2.new(0.95, 0, 1, -20),
+						CanvasSize = UDim2.new(0, 0, 0, 395),
+						ScrollBarThickness = 3,
+						ScrollBarImageColor3 = themes.Background,
+						ZIndex = 3,
+						BorderSizePixel = 0
 					}, {
 						utility:Create("UIListLayout", {
 							SortOrder = Enum.SortOrder.LayoutOrder,
@@ -282,10 +285,10 @@ do
 						Position = UDim2.new(0, 12, 0, 19),
 						Size = UDim2.new(1, -46, 0, 16),
 						ZIndex = 5,
-						Font = Enum.Font.GothamBold,
+						Font = Enum.Font.Jura,
 						Text = title,
 						TextColor3 = themes.TextColor,
-						TextSize = 14,
+						TextSize = 18,
 						TextXAlignment = Enum.TextXAlignment.Left
 					})
 				})
@@ -308,12 +311,12 @@ do
 			Parent = library.pagesContainer,
 			BackgroundTransparency = 1,
 			BorderSizePixel = 0,
-			Size = UDim2.new(1, 0, 0, 26),
+			Size = UDim2.new(1, 0, 0, 30),
 			ZIndex = 3,
 			AutoButtonColor = false,
-			Font = Enum.Font.Gotham,
+			Font = Enum.Font.Jura,
 			Text = "",
-			TextSize = 14
+			TextSize = 15
 		}, {
 			utility:Create("TextLabel", {
 				Name = "Title",
@@ -322,10 +325,10 @@ do
 				Position = UDim2.new(0, 40, 0.5, 0),
 				Size = UDim2.new(0, 76, 1, 0),
 				ZIndex = 3,
-				Font = Enum.Font.Gotham,
+				Font = Enum.Font.Jura,
 				Text = title,
 				TextColor3 = themes.TextColor,
-				TextSize = 12,
+				TextSize = 15,
 				TextTransparency = 0.65,
 				TextXAlignment = Enum.TextXAlignment.Left
 			}),
@@ -349,8 +352,8 @@ do
 			Active = true,
 			BackgroundTransparency = 1,
 			BorderSizePixel = 0,
-			Position = UDim2.new(0, 134, 0, 46),
-			Size = UDim2.new(1, -142, 1, -56),
+			Position = UDim2.new(0, 158, 0, 46),
+			Size = UDim2.new(1, -166, 1, -56),
 			CanvasSize = UDim2.new(0, 0, 0, 466),
 			ScrollBarThickness = 3,
 			ScrollBarImageColor3 = themes.DarkContrast,
@@ -396,10 +399,10 @@ do
 					BackgroundTransparency = 1,
 					Size = UDim2.new(1, 0, 0, 20),
 					ZIndex = 2,
-					Font = Enum.Font.GothamSemibold,
+					Font = Enum.Font.Jura,
 					Text = title,
 					TextColor3 = themes.TextColor,
-					TextSize = 12,
+					TextSize = 15,
 					TextXAlignment = Enum.TextXAlignment.Left,
 					TextTransparency = 1
 				}),
@@ -545,9 +548,9 @@ do
 				Position = UDim2.new(0, 10, 0, 8),
 				Size = UDim2.new(1, -40, 0, 16),
 				ZIndex = 4,
-				Font = Enum.Font.GothamSemibold,
+				Font = Enum.Font.Jura,
 				TextColor3 = themes.TextColor,
-				TextSize = 14.000,
+				TextSize = 18,
 				TextXAlignment = Enum.TextXAlignment.Left
 			}),
 			utility:Create("TextLabel", {
@@ -556,7 +559,7 @@ do
 				Position = UDim2.new(0, 10, 1, -24),
 				Size = UDim2.new(1, -40, 0, 16),
 				ZIndex = 4,
-				Font = Enum.Font.Gotham,
+				Font = Enum.Font.Jura,
 				TextColor3 = themes.TextColor,
 				TextSize = 12.000,
 				TextXAlignment = Enum.TextXAlignment.Left
@@ -592,7 +595,7 @@ do
 		notification.Text.Text = text
 		
 		local padding = 10
-		local textSize = game:GetService("TextService"):GetTextSize(text, 12, Enum.Font.Gotham, Vector2.new(math.huge, 16))
+		local textSize = game:GetService("TextService"):GetTextSize(text, 12, Enum.Font.Jura, Vector2.new(math.huge, 16))
 		
 		notification.Position = library.lastNotification or UDim2.new(0, padding, 1, -(notification.AbsoluteSize.Y + padding))
 		notification.Size = UDim2.new(0, 0, 0, 60)
@@ -666,7 +669,7 @@ do
 			Parent = self.container,
 			BackgroundTransparency = 1,
 			BorderSizePixel = 0,
-			Size = UDim2.new(1, 0, 0, 30),
+			Size = UDim2.new(1, 0, 0, 40),
 			ZIndex = 2,
 			Image = "rbxassetid://5028857472",
 			ImageColor3 = themes.DarkContrast,
@@ -678,10 +681,10 @@ do
 				BackgroundTransparency = 1,
 				Size = UDim2.new(1, 0, 1, 0),
 				ZIndex = 3,
-				Font = Enum.Font.Gotham,
+				Font = Enum.Font.Jura,
 				Text = title,
 				TextColor3 = themes.TextColor,
-				TextSize = 12,
+				TextSize = 15,
 				TextTransparency = 0.10000000149012
 			})
 		})
@@ -703,10 +706,10 @@ do
 			
 			debounce = true
 			text.TextSize = 0
-			utility:Tween(button.Title, {TextSize = 14}, 0.2)
+			utility:Tween(button.Title, {TextSize = 17}, 0.2)
 			
 			wait(0.2)
-			utility:Tween(button.Title, {TextSize = 12}, 0.2)
+			utility:Tween(button.Title, {TextSize = 15}, 0.2)
 			
 			if callback then
 				callback(function(...)
@@ -726,7 +729,7 @@ do
 			Parent = self.container,
 			BackgroundTransparency = 1,
 			BorderSizePixel = 0,
-			Size = UDim2.new(1, 0, 0, 30),
+			Size = UDim2.new(1, 0, 0, 40),
 			ZIndex = 2,
 			Image = "rbxassetid://5028857472",
 			ImageColor3 = themes.DarkContrast,
@@ -740,10 +743,10 @@ do
 				Position = UDim2.new(0, 10, 0.5, 1),
 				Size = UDim2.new(0.5, 0, 1, 0),
 				ZIndex = 3,
-				Font = Enum.Font.Gotham,
+				Font = Enum.Font.Jura,
 				Text = title,
 				TextColor3 = themes.TextColor,
-				TextSize = 12,
+				TextSize = 15,
 				TextTransparency = 0.10000000149012,
 				TextXAlignment = Enum.TextXAlignment.Left
 			}),
@@ -799,7 +802,7 @@ do
 			Parent = self.container,
 			BackgroundTransparency = 1,
 			BorderSizePixel = 0,
-			Size = UDim2.new(1, 0, 0, 30),
+			Size = UDim2.new(1, 0, 0, 40),
 			ZIndex = 2,
 			Image = "rbxassetid://5028857472",
 			ImageColor3 = themes.DarkContrast,
@@ -813,10 +816,10 @@ do
 				Position = UDim2.new(0, 10, 0.5, 1),
 				Size = UDim2.new(0.5, 0, 1, 0),
 				ZIndex = 3,
-				Font = Enum.Font.Gotham,
+				Font = Enum.Font.Jura,
 				Text = title,
 				TextColor3 = themes.TextColor,
-				TextSize = 12,
+				TextSize = 15,
 				TextTransparency = 0.10000000149012,
 				TextXAlignment = Enum.TextXAlignment.Left
 			}),
@@ -838,10 +841,10 @@ do
 					Position = UDim2.new(0, 5, 0, 0),
 					Size = UDim2.new(1, -10, 1, 0),
 					ZIndex = 3,
-					Font = Enum.Font.GothamSemibold,
+					Font = Enum.Font.Jura,
 					Text = default or "",
 					TextColor3 = themes.TextColor,
-					TextSize = 11
+					TextSize = 14
 				})
 			})
 		})
@@ -907,7 +910,7 @@ do
 			Parent = self.container,
 			BackgroundTransparency = 1,
 			BorderSizePixel = 0,
-			Size = UDim2.new(1, 0, 0, 30),
+			Size = UDim2.new(1, 0, 0, 40),
 			ZIndex = 2,
 			Image = "rbxassetid://5028857472",
 			ImageColor3 = themes.DarkContrast,
@@ -921,10 +924,10 @@ do
 				Position = UDim2.new(0, 10, 0.5, 1),
 				Size = UDim2.new(1, 0, 1, 0),
 				ZIndex = 3,
-				Font = Enum.Font.Gotham,
+				Font = Enum.Font.Jura,
 				Text = title,
 				TextColor3 = themes.TextColor,
-				TextSize = 12,
+				TextSize = 15,
 				TextTransparency = 0.10000000149012,
 				TextXAlignment = Enum.TextXAlignment.Left
 			}),
@@ -945,10 +948,10 @@ do
 					ClipsDescendants = true,
 					Size = UDim2.new(1, 0, 1, 0),
 					ZIndex = 3,
-					Font = Enum.Font.GothamSemibold,
+					Font = Enum.Font.Jura,
 					Text = default and default.Name or "None",
 					TextColor3 = themes.TextColor,
-					TextSize = 11
+					TextSize = 14
 				})
 			})
 		})
@@ -1012,7 +1015,7 @@ do
 			Parent = self.container,
 			BackgroundTransparency = 1,
 			BorderSizePixel = 0,
-			Size = UDim2.new(1, 0, 0, 30),
+			Size = UDim2.new(1, 0, 0, 40),
 			ZIndex = 2,
 			Image = "rbxassetid://5028857472",
 			ImageColor3 = themes.DarkContrast,
@@ -1026,10 +1029,10 @@ do
 				Position = UDim2.new(0, 10, 0.5, 1),
 				Size = UDim2.new(0.5, 0, 1, 0),
 				ZIndex = 3,
-				Font = Enum.Font.Gotham,
+				Font = Enum.Font.Jura,
 				Text = title,
 				TextColor3 = themes.TextColor,
-				TextSize = 12,
+				TextSize = 15,
 				TextTransparency = 0.10000000149012,
 				TextXAlignment = Enum.TextXAlignment.Left
 			}),
@@ -1078,10 +1081,10 @@ do
 				Position = UDim2.new(0, 10, 0, 8),
 				Size = UDim2.new(1, -40, 0, 16),
 				ZIndex = 2,
-				Font = Enum.Font.GothamSemibold,
+				Font = Enum.Font.Jura,
 				Text = title,
 				TextColor3 = themes.TextColor,
-				TextSize = 14,
+				TextSize = 15,
 				TextXAlignment = Enum.TextXAlignment.Left
 			}),
 			utility:Create("ImageButton", {
@@ -1199,7 +1202,7 @@ do
 							BackgroundTransparency = 1,
 							Size = UDim2.new(0.400000006, 0, 1, 0),
 							ZIndex = 2,
-							Font = Enum.Font.Gotham,
+							Font = Enum.Font.Jura,
 							Text = "R:",
 							TextColor3 = themes.TextColor,
 							TextSize = 10.000
@@ -1210,7 +1213,7 @@ do
 							Position = UDim2.new(0.300000012, 0, 0, 0),
 							Size = UDim2.new(0.600000024, 0, 1, 0),
 							ZIndex = 2,
-							Font = Enum.Font.Gotham,
+							Font = Enum.Font.Jura,
 							PlaceholderColor3 = themes.DarkContrast,
 							Text = "255",
 							TextColor3 = themes.TextColor,
@@ -1233,7 +1236,7 @@ do
 							BackgroundTransparency = 1,
 							ZIndex = 2,
 							Size = UDim2.new(0.400000006, 0, 1, 0),
-							Font = Enum.Font.Gotham,
+							Font = Enum.Font.Jura,
 							Text = "G:",
 							TextColor3 = themes.TextColor,
 							TextSize = 10.000
@@ -1244,7 +1247,7 @@ do
 							Position = UDim2.new(0.300000012, 0, 0, 0),
 							Size = UDim2.new(0.600000024, 0, 1, 0),
 							ZIndex = 2,
-							Font = Enum.Font.Gotham,
+							Font = Enum.Font.Jura,
 							Text = "255",
 							TextColor3 = themes.TextColor,
 							TextSize = 10.000
@@ -1266,7 +1269,7 @@ do
 							BackgroundTransparency = 1,
 							Size = UDim2.new(0.400000006, 0, 1, 0),
 							ZIndex = 2,
-							Font = Enum.Font.Gotham,
+							Font = Enum.Font.Jura,
 							Text = "B:",
 							TextColor3 = themes.TextColor,
 							TextSize = 10.000
@@ -1277,7 +1280,7 @@ do
 							Position = UDim2.new(0.300000012, 0, 0, 0),
 							Size = UDim2.new(0.600000024, 0, 1, 0),
 							ZIndex = 2,
-							Font = Enum.Font.Gotham,
+							Font = Enum.Font.Jura,
 							Text = "255",
 							TextColor3 = themes.TextColor,
 							TextSize = 10.000
@@ -1300,7 +1303,7 @@ do
 						BackgroundTransparency = 1,
 						Size = UDim2.new(1, 0, 1, 0),
 						ZIndex = 3,
-						Font = Enum.Font.Gotham,
+						Font = Enum.Font.Jura,
 						Text = "Submit",
 						TextColor3 = themes.TextColor,
 						TextSize = 11.000
@@ -1537,7 +1540,7 @@ do
 			BackgroundTransparency = 1,
 			BorderSizePixel = 0,
 			Position = UDim2.new(0.292817682, 0, 0.299145311, 0),
-			Size = UDim2.new(1, 0, 0, 50),
+			Size = UDim2.new(1, 0, 0, 60),
 			ZIndex = 2,
 			Image = "rbxassetid://5028857472",
 			ImageColor3 = themes.DarkContrast,
@@ -1547,13 +1550,13 @@ do
 			utility:Create("TextLabel", {
 				Name = "Title",
 				BackgroundTransparency = 1,
-				Position = UDim2.new(0, 10, 0, 6),
+				Position = UDim2.new(0, 10, 0, 11),
 				Size = UDim2.new(0.5, 0, 0, 16),
 				ZIndex = 3,
-				Font = Enum.Font.Gotham,
+				Font = Enum.Font.Jura,
 				Text = title,
 				TextColor3 = themes.TextColor,
-				TextSize = 12,
+				TextSize = 15,
 				TextTransparency = 0.10000000149012,
 				TextXAlignment = Enum.TextXAlignment.Left
 			}),
@@ -1561,19 +1564,19 @@ do
 				Name = "TextBox",
 				BackgroundTransparency = 1,
 				BorderSizePixel = 0,
-				Position = UDim2.new(1, -30, 0, 6),
+				Position = UDim2.new(1, -30, 0, 11),
 				Size = UDim2.new(0, 20, 0, 16),
 				ZIndex = 3,
-				Font = Enum.Font.GothamSemibold,
+				Font = Enum.Font.Jura,
 				Text = default or min,
 				TextColor3 = themes.TextColor,
-				TextSize = 12,
+				TextSize = 15,
 				TextXAlignment = Enum.TextXAlignment.Right
 			}),
 			utility:Create("TextLabel", {
 				Name = "Slider",
 				BackgroundTransparency = 1,
-				Position = UDim2.new(0, 10, 0, 28),
+				Position = UDim2.new(0, 10, 0, 33),
 				Size = UDim2.new(1, -20, 0, 16),
 				ZIndex = 3,
 				Text = "",
@@ -1686,7 +1689,7 @@ do
 			Name = "Dropdown",
 			Parent = self.container,
 			BackgroundTransparency = 1,
-			Size = UDim2.new(1, 0, 0, 30),
+			Size = UDim2.new(1, 0, 0, 40),
 			ClipsDescendants = true
 		}, {
 			utility:Create("UIListLayout", {
@@ -1697,7 +1700,7 @@ do
 				Name = "Search",
 				BackgroundTransparency = 1,
 				BorderSizePixel = 0,
-				Size = UDim2.new(1, 0, 0, 30),
+				Size = UDim2.new(1, 0, 0, 40),
 				ZIndex = 2,
 				Image = "rbxassetid://5028857472",
 				ImageColor3 = themes.DarkContrast,
@@ -1712,10 +1715,10 @@ do
 					Position = UDim2.new(0, 10, 0.5, 1),
 					Size = UDim2.new(1, -42, 1, 0),
 					ZIndex = 3,
-					Font = Enum.Font.Gotham,
+					Font = Enum.Font.Jura,
 					Text = title,
 					TextColor3 = themes.TextColor,
-					TextSize = 12,
+					TextSize = 15,
 					TextTransparency = 0.10000000149012,
 					TextXAlignment = Enum.TextXAlignment.Left
 				}),
@@ -1820,7 +1823,7 @@ do
 		if toggle then
 			-- page button
 			button.Title.TextTransparency = 0
-			button.Title.Font = Enum.Font.GothamSemibold
+			button.Title.Font = Enum.Font.Jura
 			
 			if button:FindFirstChild("Icon") then
 				button.Icon.ImageTransparency = 0
@@ -1882,7 +1885,7 @@ do
 			page:Resize(true)
 		else
 			-- page button
-			button.Title.Font = Enum.Font.Gotham
+			button.Title.Font = Enum.Font.Jura
 			button.Title.TextTransparency = 0.65
 			
 			if button:FindFirstChild("Icon") then
@@ -2124,10 +2127,10 @@ do
 					Position = UDim2.new(0, 10, 0, 0),
 					Size = UDim2.new(1, -10, 1, 0),
 					ZIndex = 3,
-					Font = Enum.Font.Gotham,
+					Font = Enum.Font.Jura,
 					Text = value,
 					TextColor3 = themes.TextColor,
-					TextSize = 12,
+					TextSize = 15,
 					TextXAlignment = "Left",
 					TextTransparency = 0.10000000149012
 				})
@@ -2148,7 +2151,7 @@ do
 		
 		local frame = dropdown.List.Frame
 		
-		utility:Tween(dropdown, {Size = UDim2.new(1, 0, 0, (entries == 0 and 30) or math.clamp(entries, 0, 3) * 34 + 38)}, 0.3)
+		utility:Tween(dropdown, {Size = UDim2.new(1, 0, 0, (entries == 0 and 40) or math.clamp(entries, 0, 3) * 34 + 38)}, 0.3)
 		utility:Tween(dropdown.Search.Button, {Rotation = list and 180 or 0}, 0.3)
 		
 		if entries > 3 then
