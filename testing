@@ -285,7 +285,7 @@ do
 						Font = Enum.Font.Jura,
 						Text = title,
 						TextColor3 = themes.TextColor,
-						TextSize = 14,
+						TextSize = 18,
 						TextXAlignment = Enum.TextXAlignment.Left
 					})
 				})
@@ -313,7 +313,7 @@ do
 			AutoButtonColor = false,
 			Font = Enum.Font.Jura,
 			Text = "",
-			TextSize = 14
+			TextSize = 15
 		}, {
 			utility:Create("TextLabel", {
 				Name = "Title",
@@ -325,7 +325,7 @@ do
 				Font = Enum.Font.Jura,
 				Text = title,
 				TextColor3 = themes.TextColor,
-				TextSize = 12,
+				TextSize = 15,
 				TextTransparency = 0.65,
 				TextXAlignment = Enum.TextXAlignment.Left
 			}),
@@ -399,7 +399,7 @@ do
 					Font = Enum.Font.Jura,
 					Text = title,
 					TextColor3 = themes.TextColor,
-					TextSize = 12,
+					TextSize = 15,
 					TextXAlignment = Enum.TextXAlignment.Left,
 					TextTransparency = 1
 				}),
@@ -547,7 +547,7 @@ do
 				ZIndex = 4,
 				Font = Enum.Font.Jura,
 				TextColor3 = themes.TextColor,
-				TextSize = 14.000,
+				TextSize = 18,
 				TextXAlignment = Enum.TextXAlignment.Left
 			}),
 			utility:Create("TextLabel", {
@@ -681,7 +681,7 @@ do
 				Font = Enum.Font.Jura,
 				Text = title,
 				TextColor3 = themes.TextColor,
-				TextSize = 12,
+				TextSize = 15,
 				TextTransparency = 0.10000000149012
 			})
 		})
@@ -703,10 +703,10 @@ do
 			
 			debounce = true
 			text.TextSize = 0
-			utility:Tween(button.Title, {TextSize = 14}, 0.2)
+			utility:Tween(button.Title, {TextSize = 17}, 0.2)
 			
 			wait(0.2)
-			utility:Tween(button.Title, {TextSize = 12}, 0.2)
+			utility:Tween(button.Title, {TextSize = 15}, 0.2)
 			
 			if callback then
 				callback(function(...)
@@ -743,7 +743,7 @@ do
 				Font = Enum.Font.Jura,
 				Text = title,
 				TextColor3 = themes.TextColor,
-				TextSize = 12,
+				TextSize = 15,
 				TextTransparency = 0.10000000149012,
 				TextXAlignment = Enum.TextXAlignment.Left
 			}),
@@ -816,7 +816,7 @@ do
 				Font = Enum.Font.Jura,
 				Text = title,
 				TextColor3 = themes.TextColor,
-				TextSize = 12,
+				TextSize = 15,
 				TextTransparency = 0.10000000149012,
 				TextXAlignment = Enum.TextXAlignment.Left
 			}),
@@ -841,7 +841,7 @@ do
 					Font = Enum.Font.Jura,
 					Text = default or "",
 					TextColor3 = themes.TextColor,
-					TextSize = 11
+					TextSize = 14
 				})
 			})
 		})
@@ -924,7 +924,7 @@ do
 				Font = Enum.Font.Jura,
 				Text = title,
 				TextColor3 = themes.TextColor,
-				TextSize = 12,
+				TextSize = 15,
 				TextTransparency = 0.10000000149012,
 				TextXAlignment = Enum.TextXAlignment.Left
 			}),
@@ -948,7 +948,7 @@ do
 					Font = Enum.Font.Jura,
 					Text = default and default.Name or "None",
 					TextColor3 = themes.TextColor,
-					TextSize = 11
+					TextSize = 14
 				})
 			})
 		})
@@ -1029,7 +1029,7 @@ do
 				Font = Enum.Font.Jura,
 				Text = title,
 				TextColor3 = themes.TextColor,
-				TextSize = 12,
+				TextSize = 15,
 				TextTransparency = 0.10000000149012,
 				TextXAlignment = Enum.TextXAlignment.Left
 			}),
@@ -1081,7 +1081,7 @@ do
 				Font = Enum.Font.Jura,
 				Text = title,
 				TextColor3 = themes.TextColor,
-				TextSize = 14,
+				TextSize = 15,
 				TextXAlignment = Enum.TextXAlignment.Left
 			}),
 			utility:Create("ImageButton", {
@@ -1553,7 +1553,7 @@ do
 				Font = Enum.Font.Jura,
 				Text = title,
 				TextColor3 = themes.TextColor,
-				TextSize = 12,
+				TextSize = 15,
 				TextTransparency = 0.10000000149012,
 				TextXAlignment = Enum.TextXAlignment.Left
 			}),
@@ -1567,7 +1567,7 @@ do
 				Font = Enum.Font.Jura,
 				Text = default or min,
 				TextColor3 = themes.TextColor,
-				TextSize = 12,
+				TextSize = 15,
 				TextXAlignment = Enum.TextXAlignment.Right
 			}),
 			utility:Create("TextLabel", {
@@ -1715,7 +1715,7 @@ do
 					Font = Enum.Font.Jura,
 					Text = title,
 					TextColor3 = themes.TextColor,
-					TextSize = 12,
+					TextSize = 15,
 					TextTransparency = 0.10000000149012,
 					TextXAlignment = Enum.TextXAlignment.Left
 				}),
@@ -2127,7 +2127,7 @@ do
 					Font = Enum.Font.Jura,
 					Text = value,
 					TextColor3 = themes.TextColor,
-					TextSize = 12,
+					TextSize = 15,
 					TextXAlignment = "Left",
 					TextTransparency = 0.10000000149012
 				})
