@@ -186,7 +186,7 @@ do
 		input.InputChanged:Connect(function(input)
 			if input == dragInput and dragging then
 				local delta = input.Position - mousePos
-				utility:Tween(parent, {Position = UDim2.new(framePos.X.Scale, framePos.X.Offset + delta.X, framePos.Y.Scale, framePos.Y.Offset + delta.Y)}, 0.15)
+				utility:Tween(parent, {Position = UDim2.new(framePos.X.Scale, framePos.X.Offset + delta.X, framePos.Y.Scale, framePos.Y.Offset + delta.Y)}, 0.2)
 			end
 		end)
 
@@ -256,7 +256,8 @@ do
 						Position = UDim2.new(0, 0, 0, 10),
 						Size = UDim2.new(1, 0, 1, -20),
 						CanvasSize = UDim2.new(0, 0, 0, 314),
-						ScrollBarThickness = 0
+						ScrollBarThickness = 3,
+						ScrollBarImageColor3 = themes.Background
 					}, {
 						utility:Create("UIListLayout", {
 							SortOrder = Enum.SortOrder.LayoutOrder,
@@ -308,7 +309,7 @@ do
 			Parent = library.pagesContainer,
 			BackgroundTransparency = 1,
 			BorderSizePixel = 0,
-			Size = UDim2.new(1, 0, 0, 26),
+			Size = UDim2.new(1, 0, 0, 30),
 			ZIndex = 3,
 			AutoButtonColor = false,
 			Font = Enum.Font.Jura,
