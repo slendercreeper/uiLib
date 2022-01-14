@@ -1753,7 +1753,7 @@ do
 					Position = UDim2.new(0, 4, 0, 4),
 					Size = UDim2.new(1, -8, 1, -8),
 					CanvasPosition = Vector2.new(0, 28),
-					CanvasSize = UDim2.new(0, 0, 0, 130),
+					CanvasSize = UDim2.new(0, 0, 0, 120),
 					ZIndex = 2,
 					ScrollBarThickness = 3,
 					ScrollBarImageColor3 = themes.DarkContrast
@@ -2164,7 +2164,7 @@ do
 				end
 			end
 			
-			frame.CanvasSize = UDim2.new(0, 0, 0, (entries * 34) - 4)
+			frame.CanvasSize = UDim2.new(0, 0, 0, (entries * 34) + 6)
 			frame.ScrollBarImageTransparency = 0
 		else
 			frame.CanvasSize = UDim2.new(0, 0, 0, 0)
