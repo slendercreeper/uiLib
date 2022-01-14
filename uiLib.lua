@@ -1753,7 +1753,7 @@ do
 					Position = UDim2.new(0, 4, 0, 4),
 					Size = UDim2.new(1, -8, 1, -8),
 					CanvasPosition = Vector2.new(0, 28),
-					CanvasSize = UDim2.new(0, 0, 0, 120),
+					CanvasSize = UDim2.new(0, 0, 0, 130),
 					ZIndex = 2,
 					ScrollBarThickness = 3,
 					ScrollBarImageColor3 = themes.DarkContrast
