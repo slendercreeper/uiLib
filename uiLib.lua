@@ -255,7 +255,7 @@ do
 						BackgroundTransparency = 1,
 						Position = UDim2.new(0, 0, 0, 10),
 						Size = UDim2.new(0.95, 0, 1, -20),
-						CanvasSize = UDim2.new(0, 0, 0, 395),
+						CanvasSize = UDim2.new(0, 0, 0, (40*_G.numpages)+5),
 						ScrollBarThickness = 3,
 						ScrollBarImageColor3 = themes.Background,
 						ZIndex = 3,
