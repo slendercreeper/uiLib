@@ -9,7 +9,7 @@ local tween = game:GetService("TweenService")
 local tweeninfo = TweenInfo.new
 
 -- additional
-local utility = {}
+utility = {}
 
 -- themes
 local objects = {}
