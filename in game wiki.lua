@@ -66,6 +66,22 @@ viewport.BorderColor3 = Color3.fromRGB(14,14,14)
 viewport.BackgroundTransparency = 0
 viewport.CurrentCamera = wikiscreenGui.Camera
 
+backwiki = Instance.new("TextButton")
+backwiki.Parent = viewport
+backwiki.Text = "Back"
+backwiki.TextSize = 14
+backwiki.TextColor3 = Color3.fromRGB(255,255,255)
+backwiki.BackgroundColor3 = Color3.fromRGB(14,14,14)
+backwiki.BackgroundTransparency = 1
+backwiki.TextTransparency = 1
+backwiki.AutoButtonColor = false
+backwiki.Position = UDim2.new(0.027,0,0.033,0)
+backwiki.Size = UDim2.new(0,60,0,26)
+backwiki.Font = Enum.Font.Jura
+
+backwikicorn = Instance.new("UICorner")
+backwikicorn.Parent = backwiki
+
 shinywiki = Instance.new("TextButton")
 shinywiki.Parent = viewport
 shinywiki.Text = "Shiny"
@@ -461,6 +477,3 @@ if upgradeTxt.AbsoluteSize.Y < 51 then
 end
 masterscroll.CanvasSize = UDim2.new(0,0,0,masterlayout.AbsoluteContentSize.Y)
 end
-
-newItem("Professional Upgrader")
-
