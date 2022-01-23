@@ -1,9 +1,9 @@
 MoneyLib = require(game:GetService("ReplicatedStorage").MoneyLib)
 
-screenGui = Instance.new("ScreenGui")
-screenGui.IgnoreGuiInset = true
-screenGui.Parent = game:GetService("CoreGui")
-screenGui.Name = "In-game Wiki"
+wikiscreenGui = Instance.new("ScreenGui")
+wikiscreenGui.IgnoreGuiInset = true
+wikiscreenGui.Parent = game:GetService("CoreGui")
+wikiscreenGui.Name = "In-game Wiki"
 
 wikiframe = Instance.new("ImageLabel")
 wikiframe.Image = "rbxassetid://4641149554"
@@ -15,7 +15,7 @@ wikiframe.BackgroundTransparency = 1
 wikiframe.ScaleType = "Slice"
 wikiframe.SliceCenter = Rect.new(4,4,296,296)
 wikiframe.BorderSizePixel = 0
-wikiframe.Parent = screenGui
+wikiframe.Parent = wikiscreenGui
 
 wikitopbar = Instance.new("ImageLabel")
 wikitopbar.Image = "rbxassetid://4595286933"
@@ -39,7 +39,7 @@ topbarwikitext.TextColor3 = Color3.fromRGB(255,255,255)
 topbarwikitext.TextSize = 18
 
 viewcam = Instance.new("Camera")
-viewcam.Parent = screenGui
+viewcam.Parent = wikiscreenGui
 
 viewport = Instance.new("ViewportFrame")
 viewport.Parent = wikiframe
@@ -49,7 +49,7 @@ viewport.BackgroundColor3 = Color3.fromRGB(24,24,24)
 viewport.BorderSizePixel = 4
 viewport.BorderColor3 = Color3.fromRGB(14,14,14)
 viewport.BackgroundTransparency = 0
-viewport.CurrentCamera = screenGui.Camera
+viewport.CurrentCamera = wikiscreenGui.Camera
 
 tierlabel = Instance.new("TextLabel")
 tierlabel.Parent = wikiframe
@@ -297,7 +297,7 @@ end
 for i, connection in pairs(getconnections(RunService.RenderStepped)) do
     connection:Disable()
 end
-for i,v in pairs(screenGui.ImageLabel.masterscroll.Values:GetChildren()) do
+for i,v in pairs(wikiscreenGui.ImageLabel.masterscroll.Values:GetChildren()) do
     if v:isA("TextLabel") then
         v:Destroy()
     end
