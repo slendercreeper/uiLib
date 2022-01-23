@@ -18,6 +18,20 @@ wikiframe.BorderSizePixel = 0
 wikiframe.Parent = wikiscreenGui
 wikiframe.Name = "Upgraders"
 
+wikiglow = Instance.new("ImageLabel")
+wikiglow.Name = "Glow"
+wikiglow.BackgroundTransparency = 1
+wikiglow.Position = UDim2.new(0, -15, 0, -15)
+wikiglow.Size = UDim2.new(1, 30, 1, 30)
+wikiglow.ZIndex = 0
+wikiglow.Image = "rbxassetid://5028857084"
+wikiglow.ImageTransparency = 1
+wikiglow.ImageColor3 = Color3.fromRGB(255,255,255)
+wikiglow.ScaleType = Enum.ScaleType.Slice
+wikiglow.SliceCenter = Rect.new(24, 24, 276, 276)
+wikiglow.Parent = wikiframe
+wikiglow.ZIndex = 1
+
 wikitopbar = Instance.new("ImageLabel")
 wikitopbar.Image = "rbxassetid://4595286933"
 wikitopbar.Size = UDim2.new(1,0,0,38)
