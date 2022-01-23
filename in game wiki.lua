@@ -421,6 +421,15 @@ if tier == "Refined" or tier == "Premium" then
     addValueLabel("Cost", 0, "Cost: " .. itemport.Crystals.Value .."uC")
     end
 end
+if tier == "Contraband" then
+    if itemport:FindFirstChild("ReqPoints") then
+        if itemport.ReqPoints.Value ~= 0 then
+            addValueLabel("Cost", 0, "Avg Cost: " .. itemport.ReqPoints.Value .." RP")
+        else
+            addValueLabel("Cost", 0, "Avg Cost: " .. itemport.Cost.Value .." uC")
+        end
+    end
+end
 addValueLabel("RebProof", 1, rimd.reb)
 addValueLabel("SacbProof", 2, rimd.sac)
 addValueLabel("ItemId", 3, "Item Id: " .. itemport.ItemId.Value)
