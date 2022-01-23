@@ -417,7 +417,9 @@ if tier == "Common" or tier == "Uncommon" or tier == "Rare" or tier == "Super Ra
     addValueLabel("Cost", 0, "Cost: " .. MoneyLib.HandleMoney(itemport.Cost.Value))
 end
 if tier == "Refined" or tier == "Premium" then
+    if itemport:FindFirstChild("Crystals") then
     addValueLabel("Cost", 0, "Cost: " .. itemport.Crystals.Value .."uC")
+    end
 end
 addValueLabel("RebProof", 1, rimd.reb)
 addValueLabel("SacbProof", 2, rimd.sac)
