@@ -16,6 +16,7 @@ wikiframe.ScaleType = "Slice"
 wikiframe.SliceCenter = Rect.new(4,4,296,296)
 wikiframe.BorderSizePixel = 0
 wikiframe.Parent = wikiscreenGui
+wikiframe.Name = "Upgraders"
 
 wikitopbar = Instance.new("ImageLabel")
 wikitopbar.Image = "rbxassetid://4595286933"
@@ -297,7 +298,7 @@ end
 for i, connection in pairs(getconnections(RunService.RenderStepped)) do
     connection:Disable()
 end
-for i,v in pairs(wikiscreenGui.ImageLabel.masterscroll.Values:GetChildren()) do
+for i,v in pairs(wikiscreenGui.Upgraders.masterscroll.Values:GetChildren()) do
     if v:isA("TextLabel") then
         v:Destroy()
     end
