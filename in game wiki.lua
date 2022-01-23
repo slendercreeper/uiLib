@@ -416,6 +416,9 @@ upgradeTxt.Text = rimd.limit
 if tier == "Common" or tier == "Uncommon" or tier == "Rare" or tier == "Super Rare" or tier == "Unique" or tier == "Epic" or tier == "Legendary" or tier == "Mythic" or tier == "Divine" or tier == "Almighty" then
     addValueLabel("Cost", 0, "Cost: " .. MoneyLib.HandleMoney(itemport.Cost.Value))
 end
+if tier == "Refined" or tier == "Premium" then
+    addValueLabel("Cost", 0, "Cost: " .. itemport.Crystals.Value .."uC")
+end
 addValueLabel("RebProof", 1, rimd.reb)
 addValueLabel("SacbProof", 2, rimd.sac)
 addValueLabel("ItemId", 3, "Item Id: " .. itemport.ItemId.Value)
@@ -443,4 +446,3 @@ if upgradeTxt.AbsoluteSize.Y < 51 then
 end
 masterscroll.CanvasSize = UDim2.new(0,0,0,masterlayout.AbsoluteContentSize.Y)
 end
-
