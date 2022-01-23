@@ -341,6 +341,11 @@ for i,v in pairs(viewport:GetChildren()) do
         v:Destroy()
     end
 end
+for i,v in pairs(wikiframe:GetChildren()) do
+    if v:isA("Model") then
+        v:Destroy()
+    end
+end
 for i, connection in pairs(getconnections(RunService.RenderStepped)) do
     connection:Disable()
 end
@@ -353,7 +358,7 @@ local item = game:GetService("ReplicatedStorage").Items[name]
 
 itemport = item:Clone()
 itemport.Parent = viewport
- 
+itemport.PrimaryPart = itemport.Hitbox
 local target = itemport.Hitbox 
 local camera = viewcam
 camera.CameraType = Enum.CameraType.Scriptable
