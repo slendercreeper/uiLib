@@ -453,6 +453,9 @@ end
 addValueLabel("RebProof", 1, rimd.reb)
 addValueLabel("SacbProof", 2, rimd.sac)
 addValueLabel("ItemId", 3, "Item Id: " .. itemport.ItemId.Value)
+if itemport:FindFirstChild("ShinyId") then
+    addValueLabel("ShinyId", 3, "Shiny Id: " .. itemport.ShinyId.Value)
+end
 if tier == "Common" or tier == "Uncommon" or tier == "Rare" or tier == "Super Rare" or tier == "Unique" or tier == "Epic" or tier == "Legendary" or tier == "Mythic" or tier == "Divine" or tier == "Almighty" then
 addValueLabel("RP Required", 7, "RP Required: " .. string.gsub(MoneyLib.HandleMoney(itemport.ReqPoints.Value), "%$", ""))
 end
