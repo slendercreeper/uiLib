@@ -412,6 +412,16 @@ if itemport:FindFirstChild("RebirthRequirement") then
 else
     sourceTxt.Text = rimd.source
 end
+if tier == "Reborn" then
+    sourceTxt.Text = rimd.source .. " (Life " .. itemport.ReqLife.Value .."+)"
+    addValueLabel("Rarity", 0, "Rarity: " .. itemport.RebornChance.Value)
+    if itemport:FindFirstChild("ShardSalvagePrice") then
+        addValueLabel("Salvage", 0, "Salvage Yield: " .. itemport.ShardSalvagePrice.Value)
+    end
+    if itemport:FindFirstChild("RebornShopPrice") then
+        addValueLabel("rebshop", 0, "Craftsman Cost: " .. itemport.RebornShopPrice.Value)
+    end
+end
 upgradeTxt.Text = rimd.limit
 if tier == "Common" or tier == "Uncommon" or tier == "Rare" or tier == "Super Rare" or tier == "Unique" or tier == "Epic" or tier == "Legendary" or tier == "Mythic" or tier == "Divine" or tier == "Almighty" then
     addValueLabel("Cost", 0, "Cost: " .. MoneyLib.HandleMoney(itemport.Cost.Value))
@@ -451,5 +461,3 @@ if upgradeTxt.AbsoluteSize.Y < 51 then
 end
 masterscroll.CanvasSize = UDim2.new(0,0,0,masterlayout.AbsoluteContentSize.Y)
 end
-
-
