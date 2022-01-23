@@ -422,13 +422,7 @@ if tier == "Refined" or tier == "Premium" then
     end
 end
 if tier == "Contraband" then
-    if itemport:FindFirstChild("ReqPoints") then
-        if itemport.ReqPoints.Value ~= 0 then
-            addValueLabel("Cost", 0, "Avg Cost: " .. itemport.ReqPoints.Value .." RP")
-        else
-            addValueLabel("Cost", 0, "Avg Cost: " .. itemport.Cost.Value .." uC")
-        end
-    end
+    addValueLabel("Cost", 0, rimd.cost)
 end
 addValueLabel("RebProof", 1, rimd.reb)
 addValueLabel("SacbProof", 2, rimd.sac)
@@ -457,3 +451,5 @@ if upgradeTxt.AbsoluteSize.Y < 51 then
 end
 masterscroll.CanvasSize = UDim2.new(0,0,0,masterlayout.AbsoluteContentSize.Y)
 end
+
+
