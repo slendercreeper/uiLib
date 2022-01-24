@@ -466,7 +466,7 @@ end
 if tier == "Common" or tier == "Uncommon" or tier == "Rare" or tier == "Super Rare" or tier == "Unique" or tier == "Epic" or tier == "Legendary" or tier == "Mythic" or tier == "Divine" or tier == "Almighty" then
 addValueLabel("RP Required", 7, "RP Required: " .. string.gsub(MoneyLib.HandleMoney(itemport.ReqPoints.Value), "%$", ""))
 end
-if itemport:FindFirstChild("Blueprint Price") then
+if itemport:FindFirstChild("BlueprintPrice") then
     addValueLabel("blueprint", 3, "Blueprint: " .. string.gsub(MoneyLib.HandleMoney(itemport.ReqPoints.Value), "%$", "") .. " RP")
 end
 local oneconv = false
