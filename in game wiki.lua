@@ -430,7 +430,9 @@ effectsTxt.Text = rimd.effects
 drawbacksTxt.Text = rimd.drawbacks
 if itemport:FindFirstChild("RebirthRequirement") then
     sourceTxt.Text = rimd.source .. " (Life " .. itemport.RebirthRequirement.Value .."+)"
-else
+elseif itemport:FindFirstChild("UnlockAt") then
+    sourceTxt.Text = rimd.source .. " (Life " .. itemport.UnlockAt.Value .."+)"
+else   
     sourceTxt.Text = rimd.source
 end
 if tier == "Reborn" then
