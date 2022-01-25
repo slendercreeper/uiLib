@@ -435,6 +435,23 @@ elseif itemport:FindFirstChild("UnlockAt") then
 else   
     sourceTxt.Text = rimd.source
 end
+if itemport:FindFirstChild("EnchantCost") then
+    for i,v in pairs(itemport.EnchantCost:GetChildren()) do
+        if tonumber(v.Name) ~= nil then
+            for o,r in pairs(game.ReplicatedStorage.Items:GetChildren()) do
+                if r.ItemId.Value == tonumber(v.Name) then
+                    sourceTxt.Text = sourceTxt.Text .. "x" .. v.Value .. " " .. r.Name
+                end
+            end
+        elseif v.Name == "Shards" then
+            sourceTxt.Text = sourceTxt.Text .. v.Value .. " Shards"
+        end
+
+        if i ~= #itemport.EnchantCost:GetChildren() then
+            sourceTxt.Text = sourceTxt.Text .. "\n"
+        end
+    end
+end
 if tier == "Evolved Reborn" or tier == "Adv. Evolution" then
     for i,v in pairs(game.ReplicatedStorage.Items:GetChildren()) do
         if v:FindFirstChild("RequiredEvo") then
