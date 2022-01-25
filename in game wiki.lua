@@ -435,6 +435,18 @@ elseif itemport:FindFirstChild("UnlockAt") then
 else   
     sourceTxt.Text = rimd.source
 end
+if tier == "Evolved Reborn" then
+    for i,v in pairs(game.ReplicatedStorage.Items:GetChildren()) do
+        if v:FindFirstChild("RequiredEvo") then
+            if v.RequiredEvo.Value == itemport.ItemId.Value then
+                local evoshiny = Instance.new("IntValue")
+                evoshiny.Parent = itemport
+                evoshiny.Value = v.ItemId.Value
+                evoshiny.Name = "ShinyId"
+            end
+        end
+    end
+end
 if tier == "Reborn" then
     sourceTxt.Text = rimd.source .. " (Life " .. itemport.ReqLife.Value .."+)"
     addValueLabel("Rarity", 0, "Rarity: " .. itemport.RebornChance.Value)
