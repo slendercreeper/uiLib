@@ -435,7 +435,7 @@ elseif itemport:FindFirstChild("UnlockAt") then
 else   
     sourceTxt.Text = rimd.source
 end
-if tier == "Evolved Reborn" then
+if tier == "Evolved Reborn" or tier == "Adv. Evolution" then
     for i,v in pairs(game.ReplicatedStorage.Items:GetChildren()) do
         if v:FindFirstChild("RequiredEvo") then
             if v.RequiredEvo.Value == itemport.ItemId.Value then
