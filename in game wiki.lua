@@ -447,7 +447,7 @@ if tier == "Evolved Reborn" then
         end
     end
 end
-if tier == "Reborn" then
+if tier == "Reborn" or tier == "Adv. Reborn" then
     sourceTxt.Text = rimd.source .. " (Life " .. itemport.ReqLife.Value .."+)"
     addValueLabel("Rarity", 0, "Rarity: " .. itemport.RebornChance.Value)
     if itemport:FindFirstChild("ShardSalvagePrice") then
@@ -466,6 +466,9 @@ if tier == "Refined" or tier == "Premium" then
     addValueLabel("Cost", 0, "Cost: " .. itemport.Crystals.Value .."uC")
     end
 end
+if itemport:FindFirstChild("BlueprintPrice") then
+    addValueLabel("blueprint", 0, "Blueprint: " .. string.gsub(MoneyLib.HandleMoney(itemport.BlueprintPrice.Value), "%$", "") .. " RP")
+end
 if tier == "Contraband" then
     addValueLabel("Cost", 0, rimd.cost)
 end
@@ -477,9 +480,6 @@ if itemport:FindFirstChild("ShinyId") then
 end
 if tier == "Common" or tier == "Uncommon" or tier == "Rare" or tier == "Super Rare" or tier == "Unique" or tier == "Epic" or tier == "Legendary" or tier == "Mythic" or tier == "Divine" or tier == "Almighty" then
 addValueLabel("RP Required", 7, "RP Required: " .. string.gsub(MoneyLib.HandleMoney(itemport.ReqPoints.Value), "%$", ""))
-end
-if itemport:FindFirstChild("BlueprintPrice") then
-    addValueLabel("blueprint", 7, "Blueprint: " .. string.gsub(MoneyLib.HandleMoney(itemport.BlueprintPrice.Value), "%$", "") .. " RP")
 end
 local oneconv = false
 for i,v in pairs(itemport:GetDescendants()) do
