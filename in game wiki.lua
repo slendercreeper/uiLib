@@ -1097,6 +1097,7 @@ end
 if tier == "Contraband" then
     addValueLabelMine("Cost", 0, rimd.cost)
 end
+addValueLabelMine("CellFurn",1, rimd.cell)
 addValueLabelMine("RebProof", 1, rimd.reb)
 addValueLabelMine("SacbProof", 2, rimd.sac)
 addValueLabelMine("ItemId", 3, "Item Id: " .. itemportMine.ItemId.Value)
@@ -1114,7 +1115,6 @@ for i,v in pairs(itemportMine:GetDescendants()) do
     end
 end
 if drawbacksTxtMine.AbsoluteSize.Y < 60 then
-    print("lol")
     sfdrawbacksMine.Size = UDim2.new(0,sfdrawbacksMine.Size.X.Offset,0,drawbacksTxtMine.AbsoluteSize.Y+1)
 end
 if effectsTxtMine.AbsoluteSize.Y < 102 then
