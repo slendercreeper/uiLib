@@ -937,7 +937,7 @@ function addValueLabelMine(name, order, text)
 end
 
 function newMine(name) 
-    topbarwikitext.Text = name
+    topbarwikitextMine.Text = name
     masterscrollMine.CanvasSize = UDim2.new(0,0,0,0)
 local TweenService = game:GetService("TweenService")
 local RunService = game:GetService("RunService")
