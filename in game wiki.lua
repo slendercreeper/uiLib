@@ -1126,6 +1126,10 @@ end
 sforesizeMine.Size = UDim2.new(0,sforesizeMine.Size.X.Offset,0,0)
 sfdroprateMine.Size = UDim2.new(0,sfdroprateMine.Size.X.Offset,0,0)
 sforevalueMine.Size = UDim2.new(0,sforevalueMine.Size.X.Offset,0,0)
+sfeffectsMine.Visible = true
+effectstabMine.Visible = true
+sfdrawbacksMine.Visible = true
+drawbackstabMine.Visible = true
 if rimd.effects == "N/A" then
     sfeffectsMine.Visible = false
     effectstabMine.Visible = false
