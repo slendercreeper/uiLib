@@ -948,9 +948,6 @@ for i,v in pairs(wikiframe:GetChildren()) do
         v:Destroy()
     end
 end
-for i, connection in pairs(getconnections(RunService.RenderStepped)) do
-    connection:Disable()
-end
 for i,v in pairs(wikiscreenGui.Mines.masterscroll.Values:GetChildren()) do
     if v:isA("TextLabel") then
         v:Destroy()
@@ -1005,7 +1002,7 @@ tween.Completed:Connect(function()
 end)
 tween:Play()
  
-RunService.RenderStepped:Connect(function()
+_G.cam = RunService.RenderStepped:Connect(function()
 	if tweenComplete == false then
 		updateCamera()
 	end
