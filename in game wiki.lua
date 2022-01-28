@@ -1134,3 +1134,529 @@ if rimd.drawbacks == "N/A" then
 end
 masterscrollMine.CanvasSize = UDim2.new(0,0,0,masterlayoutMine.AbsoluteContentSize.Y)
 end
+
+wikiframeFurn = Instance.new("ImageLabel")
+wikiframeFurn.Image = "rbxassetid://4641149554"
+wikiframeFurn.Size = UDim2.new(0,671.5,0,415)
+wikiframeFurn.AnchorPoint = Vector2.new(0.5,0.5)
+wikiframeFurn.Position = UDim2.new(0.5,0,0.5,0)
+wikiframeFurn.ImageColor3 = Color3.fromRGB(24,24,24)
+wikiframeFurn.BackgroundTransparency = 1
+wikiframeFurn.ScaleType = "Slice"
+wikiframeFurn.SliceCenter = Rect.new(4,4,296,296)
+wikiframeFurn.BorderSizePixel = 0
+wikiframeFurn.Parent = wikiscreenGui
+wikiframeFurn.Name = "Furnaces"
+
+wikiglowFurn = Instance.new("ImageLabel")
+wikiglowFurn.Name = "Glow"
+wikiglowFurn.BackgroundTransparency = 1
+wikiglowFurn.Position = UDim2.new(0, -15, 0, -15)
+wikiglowFurn.Size = UDim2.new(1, 30, 1, 30)
+wikiglowFurn.ZIndex = 0
+wikiglowFurn.Image = "rbxassetid://5028857084"
+wikiglowFurn.ImageTransparency = 0
+wikiglowFurn.ImageColor3 = Color3.fromRGB(255,255,255)
+wikiglowFurn.ScaleType = Enum.ScaleType.Slice
+wikiglowFurn.SliceCenter = Rect.new(24, 24, 276, 276)
+wikiglowFurn.Parent = wikiframeFurn
+wikiglowFurn.ZIndex = 1
+
+wikitopbarFurn = Instance.new("ImageLabel")
+wikitopbarFurn.Image = "rbxassetid://4595286933"
+wikitopbarFurn.Size = UDim2.new(1,0,0,38)
+wikitopbarFurn.Position = UDim2.new(0,0,0,0)
+wikitopbarFurn.ImageColor3 = Color3.fromRGB(14,14,14)
+wikitopbarFurn.BackgroundTransparency = 1
+wikitopbarFurn.ScaleType = "Slice"
+wikitopbarFurn.SliceCenter = Rect.new(4,4,296,296)
+wikitopbarFurn.BorderSizePixel = 0
+wikitopbarFurn.Parent = wikiframeFurn
+
+topbarwikitextFurn = Instance.new("TextLabel")
+topbarwikitextFurn.Font = Enum.Font.Jura
+topbarwikitextFurn.BackgroundTransparency = 1
+topbarwikitextFurn.Size = UDim2.new(1,0,0,38)
+topbarwikitextFurn.Position = UDim2.new(0,0,0,0)
+topbarwikitextFurn.Parent = wikitopbarFurn
+topbarwikitextFurn.Text = "Vulcan's Wrath"
+topbarwikitextFurn.TextColor3 = Color3.fromRGB(255,255,255)
+topbarwikitextFurn.TextSize = 18
+
+viewportFurn = Instance.new("ViewportFrame")
+viewportFurn.Parent = wikiframeFurn
+viewportFurn.Size = UDim2.new(0,375,0,300)
+viewportFurn.Position = UDim2.new(0,4,0,38)
+viewportFurn.BackgroundColor3 = Color3.fromRGB(24,24,24)
+viewportFurn.BorderSizePixel = 4
+viewportFurn.BorderColor3 = Color3.fromRGB(14,14,14)
+viewportFurn.BackgroundTransparency = 0
+viewportFurn.CurrentCamera = wikiscreenGui.Camera
+
+backwikiFurn = Instance.new("TextButton")
+backwikiFurn.Parent = viewportFurn
+backwikiFurn.Text = "Back"
+backwikiFurn.TextSize = 14
+backwikiFurn.TextColor3 = Color3.fromRGB(255,255,255)
+backwikiFurn.BackgroundColor3 = Color3.fromRGB(14,14,14)
+backwikiFurn.BackgroundTransparency = 1
+backwikiFurn.TextTransparency = 1
+backwikiFurn.AutoButtonColor = false
+backwikiFurn.Position = UDim2.new(0.027,0,0.033,0)
+backwikiFurn.Size = UDim2.new(0,60,0,26)
+backwikiFurn.Font = Enum.Font.Jura
+
+backwikicornFurn = Instance.new("UICorner")
+backwikicornFurn.Parent = backwikiFurn
+
+shinywikiFurn = Instance.new("TextButton")
+shinywikiFurn.Parent = viewportFurn
+shinywikiFurn.Text = "Shiny"
+shinywikiFurn.TextSize = 14
+shinywikiFurn.TextColor3 = Color3.fromRGB(255,255,255)
+shinywikiFurn.BackgroundColor3 = Color3.fromRGB(14,14,14)
+shinywikiFurn.BackgroundTransparency = 1
+shinywikiFurn.TextTransparency = 1
+shinywikiFurn.AutoButtonColor = false
+shinywikiFurn.Position = UDim2.new(0.815,0,0.033,0)
+shinywikiFurn.Size = UDim2.new(0,60,0,26)
+shinywikiFurn.Font = Enum.Font.Jura
+
+shinywikicornFurn = Instance.new("UICorner")
+shinywikicornFurn.Parent = shinywikiFurn
+
+tierlabelFurn = Instance.new("TextLabel")
+tierlabelFurn.Parent = wikiframeFurn
+tierlabelFurn.Size = UDim2.new(0,375,0,49)
+tierlabelFurn.Position = UDim2.new(0.009,0,0.848,0)
+tierlabelFurn.BackgroundColor3 = Color3.fromRGB(14,14,14)
+tierlabelFurn.TextColor3 = Color3.fromRGB(255,255,255)
+tierlabelFurn.Font = Enum.Font.Jura
+tierlabelFurn.TextSize = 18
+tierlabelFurn.Text = "placeholder"
+
+tiercornerFurn = Instance.new("UICorner")
+tiercornerFurn.Parent = tierlabelFurn
+
+masterscrollFurn = Instance.new("ScrollingFrame")
+masterscrollFurn.BackgroundColor3 = Color3.fromRGB(24,24,24)
+masterscrollFurn.BackgroundTransparency = 1
+masterscrollFurn.BorderSizePixel = 0
+masterscrollFurn.Parent = wikiframeFurn
+masterscrollFurn.Position = UDim2.new(0.574,-4,0.116,0)
+masterscrollFurn.Size = UDim2.new(0,284,0,353)
+--masterscrollFurn.AutomaticCanvasSize = Enum.AutomaticSize.Y
+masterscrollFurn.ScrollBarImageColor3 = Color3.fromRGB(14,14,14)
+masterscrollFurn.ScrollingDirection = "Y"
+masterscrollFurn.ScrollBarThickness = 3
+masterscrollFurn.CanvasSize = UDim2.new(0,0,0,0)
+masterscrollFurn.Name = "masterscroll"
+
+masterlayoutFurn = Instance.new("UIListLayout")
+masterlayoutFurn.Parent = masterscrollFurn
+masterlayoutFurn.Padding = UDim.new(0,7.5)
+masterlayoutFurn.HorizontalAlignment = "Center"
+masterlayoutFurn.SortOrder = "LayoutOrder"
+
+effectstabFurn = Instance.new("TextLabel")
+effectstabFurn.Parent = masterscrollFurn
+effectstabFurn.Size = UDim2.new(0,214,0,27)
+effectstabFurn.Position = UDim2.new(0.085,0,-0.001,0)
+effectstabFurn.BackgroundColor3 = Color3.fromRGB(14,14,14)
+effectstabFurn.TextColor3 = Color3.fromRGB(255,255,255)
+effectstabFurn.Font = Enum.Font.Jura
+effectstabFurn.TextSize = 18
+effectstabFurn.LayoutOrder = 0
+effectstabFurn.Text = "Effects"
+
+effectscornFurn = Instance.new("UICorner")
+effectscornFurn.Parent = effectstabFurn
+
+sfeffectsFurn = Instance.new("ScrollingFrame")
+sfeffectsFurn.BackgroundColor3 = Color3.fromRGB(24,24,24)
+sfeffectsFurn.BorderSizePixel = 0
+sfeffectsFurn.Parent = masterscrollFurn
+sfeffectsFurn.Position = UDim2.new(0.085,0,0.098,0)
+sfeffectsFurn.AutomaticCanvasSize = Enum.AutomaticSize.Y
+sfeffectsFurn.ScrollBarImageColor3 = Color3.fromRGB(14,14,14)
+sfeffectsFurn.ScrollingDirection = "Y"
+sfeffectsFurn.ScrollBarThickness = 3
+sfeffectsFurn.AutomaticSize = Enum.AutomaticSize.Y
+sfeffectsFurn.Size = UDim2.new(0,214,0,102)
+sfeffectsFurn.CanvasSize = UDim2.new(0,0,0,0)
+sfeffectsFurn.Name = "ScrollingEffects"
+
+effectsTxtFurn = Instance.new("TextLabel")
+effectsTxtFurn.Parent = sfeffectsFurn
+effectsTxtFurn.Size = UDim2.new(0,207,0,0)
+effectsTxtFurn.AutomaticSize = Enum.AutomaticSize.Y
+effectsTxtFurn.Position = UDim2.new(0,0,0,0)
+effectsTxtFurn.BackgroundTransparency = 1
+effectsTxtFurn.TextColor3 = Color3.fromRGB(255,255,255)
+effectsTxtFurn.Font = Enum.Font.Jura
+effectsTxtFurn.RichText = true
+effectsTxtFurn.TextWrapped = true
+effectsTxtFurn.TextYAlignment = "Top"
+effectsTxtFurn.TextSize = 15
+effectsTxtFurn.Text = "Placeholder"
+
+drawbackstabFurn = Instance.new("TextLabel")
+drawbackstabFurn.Parent = masterscrollFurn
+drawbackstabFurn.Size = UDim2.new(0,214,0,27)
+drawbackstabFurn.Position = UDim2.new(0.085,0,0.411,0)
+drawbackstabFurn.BackgroundColor3 = Color3.fromRGB(14,14,14)
+drawbackstabFurn.TextColor3 = Color3.fromRGB(255,255,255)
+drawbackstabFurn.Font = Enum.Font.Jura
+drawbackstabFurn.TextSize = 18
+drawbackstabFurn.Text = "Drawbacks"
+
+drawbackscorn = Instance.new("UICorner")
+drawbackscorn.Parent = drawbackstabFurn
+
+sfdrawbacksFurn = Instance.new("ScrollingFrame")
+sfdrawbacksFurn.BackgroundColor3 = Color3.fromRGB(24,24,24)
+sfdrawbacksFurn.BorderSizePixel = 0
+sfdrawbacksFurn.Parent = masterscrollFurn
+sfdrawbacksFurn.Position = UDim2.new(0.085,0,0.504,0)
+sfdrawbacksFurn.AutomaticCanvasSize = Enum.AutomaticSize.Y
+sfdrawbacksFurn.ScrollBarImageColor3 = Color3.fromRGB(14,14,14)
+sfdrawbacksFurn.ScrollingDirection = "Y"
+sfdrawbacksFurn.ScrollBarThickness = 3
+sfdrawbacksFurn.AutomaticSize = Enum.AutomaticSize.Y
+sfdrawbacksFurn.Size = UDim2.new(0,214,0,60)
+sfdrawbacksFurn.CanvasSize = UDim2.new(0,0,0,0)
+sfdrawbacksFurn.Name = "Scrollingdrawbacks"
+
+drawbacksTxtFurn = Instance.new("TextLabel")
+drawbacksTxtFurn.Parent = sfdrawbacksFurn
+drawbacksTxtFurn.Size = UDim2.new(0,207,0,0)
+drawbacksTxtFurn.AutomaticSize = Enum.AutomaticSize.Y
+drawbacksTxtFurn.Position = UDim2.new(0,0,0,0)
+drawbacksTxtFurn.BackgroundTransparency = 1
+drawbacksTxtFurn.TextColor3 = Color3.fromRGB(255,255,255)
+drawbacksTxtFurn.Font = Enum.Font.Jura
+drawbacksTxtFurn.RichText = true
+drawbacksTxtFurn.TextWrapped = true
+drawbacksTxtFurn.TextYAlignment = "Top"
+drawbacksTxtFurn.TextSize = 15
+drawbacksTxtFurn.Text = "Placeholder"
+
+RPtabFurn = Instance.new("TextLabel")
+RPtabFurn.Parent = masterscrollFurn
+RPtabFurn.Size = UDim2.new(0,214,0,27)
+RPtabFurn.Position = UDim2.new(0.085,0,-0.001,0)
+RPtabFurn.BackgroundColor3 = Color3.fromRGB(14,14,14)
+RPtabFurn.TextColor3 = Color3.fromRGB(255,255,255)
+RPtabFurn.Font = Enum.Font.Jura
+RPtabFurn.TextSize = 18
+RPtabFurn.LayoutOrder = 0
+RPtabFurn.Text = "RP Yield"
+
+RPcornFurn = Instance.new("UICorner")
+RPcornFurn.Parent = RPtabFurn
+
+sfRPFurn = Instance.new("ScrollingFrame")
+sfRPFurn.BackgroundColor3 = Color3.fromRGB(24,24,24)
+sfRPFurn.BorderSizePixel = 0
+sfRPFurn.Parent = masterscrollFurn
+sfRPFurn.Position = UDim2.new(0.085,0,0.098,0)
+sfRPFurn.AutomaticCanvasSize = Enum.AutomaticSize.Y
+sfRPFurn.ScrollBarImageColor3 = Color3.fromRGB(14,14,14)
+sfRPFurn.ScrollingDirection = "Y"
+sfRPFurn.ScrollBarThickness = 3
+sfRPFurn.AutomaticSize = Enum.AutomaticSize.Y
+sfRPFurn.Size = UDim2.new(0,214,0,102)
+sfRPFurn.CanvasSize = UDim2.new(0,0,0,0)
+sfRPFurn.Name = "ScrollingRP"
+
+RPTxtFurn = Instance.new("TextLabel")
+RPTxtFurn.Parent = sfRPFurn
+RPTxtFurn.Size = UDim2.new(0,207,0,0)
+RPTxtFurn.AutomaticSize = Enum.AutomaticSize.Y
+RPTxtFurn.Position = UDim2.new(0,0,0,0)
+RPTxtFurn.BackgroundTransparency = 1
+RPTxtFurn.TextColor3 = Color3.fromRGB(255,255,255)
+RPTxtFurn.Font = Enum.Font.Jura
+RPTxtFurn.RichText = true
+RPTxtFurn.TextWrapped = true
+RPTxtFurn.TextYAlignment = "Top"
+RPTxtFurn.TextSize = 15
+RPTxtFurn.Text = "Placeholder"
+
+sourcetabFurn = Instance.new("TextLabel")
+sourcetabFurn.Parent = masterscrollFurn
+sourcetabFurn.Size = UDim2.new(0,214,0,27)
+sourcetabFurn.Position = UDim2.new(0.085,0,0.694,0)
+sourcetabFurn.BackgroundColor3 = Color3.fromRGB(14,14,14)
+sourcetabFurn.TextColor3 = Color3.fromRGB(255,255,255)
+sourcetabFurn.Font = Enum.Font.Jura
+sourcetabFurn.TextSize = 18
+sourcetabFurn.Text = "Source"
+
+sourcecornFurn = Instance.new("UICorner")
+sourcecornFurn.Parent = sourcetabFurn
+
+sfsourceFurn = Instance.new("ScrollingFrame")
+sfsourceFurn.BackgroundColor3 = Color3.fromRGB(24,24,24)
+sfsourceFurn.BorderSizePixel = 0
+sfsourceFurn.Parent = masterscrollFurn
+sfsourceFurn.Position = UDim2.new(0.085,0,0.788,0)
+sfsourceFurn.AutomaticCanvasSize = Enum.AutomaticSize.Y
+sfsourceFurn.ScrollBarImageColor3 = Color3.fromRGB(14,14,14)
+sfsourceFurn.ScrollingDirection = "Y"
+sfsourceFurn.ScrollBarThickness = 3
+sfsourceFurn.AutomaticSize = Enum.AutomaticSize.Y
+sfsourceFurn.Size = UDim2.new(0,214,0,51)
+sfsourceFurn.CanvasSize = UDim2.new(0,0,0,0)
+sfsourceFurn.Name = "Scrollingsource"
+
+sourceTxtFurn = Instance.new("TextLabel")
+sourceTxtFurn.Parent = sfsourceFurn
+sourceTxtFurn.Size = UDim2.new(0,207,0,0)
+sourceTxtFurn.AutomaticSize = Enum.AutomaticSize.Y
+sourceTxtFurn.Position = UDim2.new(0,0,0,0)
+sourceTxtFurn.BackgroundTransparency = 1
+sourceTxtFurn.TextColor3 = Color3.fromRGB(255,255,255)
+sourceTxtFurn.Font = Enum.Font.Jura
+sourceTxtFurn.RichText = true
+sourceTxtFurn.TextWrapped = true
+sourceTxtFurn.TextYAlignment = "Top"
+sourceTxtFurn.TextSize = 15
+sourceTxtFurn.Text = "Placeholder"
+
+sfvaluesFurn = Instance.new("Frame")
+sfvaluesFurn.BackgroundColor3 = Color3.fromRGB(14,14,14)
+sfvaluesFurn.BackgroundTransparency = 0
+sfvaluesFurn.BorderSizePixel = 0
+sfvaluesFurn.Parent = masterscrollFurn
+sfvaluesFurn.Position = UDim2.new(0.085,0,0.946,0)
+sfvaluesFurn.AutomaticSize = Enum.AutomaticSize.Y
+sfvaluesFurn.Size = UDim2.new(0,214,0,0)
+sfvaluesFurn.Name = "Values"
+
+valueslayoutFurn = Instance.new("UIListLayout")
+valueslayoutFurn.Parent = sfvaluesFurn
+valueslayoutFurn.Padding = UDim.new(0,0)
+valueslayoutFurn.SortOrder = "LayoutOrder"
+
+valuescornFurn = Instance.new("UICorner")
+valuescornFurn.Parent = sfvaluesFurn
+
+function addValueLabelFurn(name, order, text)
+    local valuestab = Instance.new("TextLabel")
+    valuestab.Parent = sfvaluesFurn
+    valuestab.Size = UDim2.new(0,214,0,27)
+    valuestab.BackgroundColor3 = Color3.fromRGB(14,14,14)
+    valuestab.BackgroundTransparency = 1
+    valuestab.TextColor3 = Color3.fromRGB(255,255,255)
+    valuestab.Font = Enum.Font.Jura
+    valuestab.TextScaled = true
+    valuestab.Text = text
+    valuestab.LayoutOrder = order
+    valuestab.Name = name
+
+    local valuescorn = Instance.new("UICorner")
+    valuescorn.Parent = valuestab
+
+    local valuesCon = Instance.new("UITextSizeConstraint")
+    valuesCon.MaxTextSize = 18
+    valuesCon.Parent = valuestab
+end
+
+function newFurn(name) 
+    topbarwikitextFurn.Text = name
+    masterscrollFurn.CanvasSize = UDim2.new(0,0,0,0)
+local TweenService = game:GetService("TweenService")
+local RunService = game:GetService("RunService")
+for i,v in pairs(viewportFurn:GetChildren()) do
+    if v:IsA("Model") then
+        v:Destroy()
+    end
+end
+for i,v in pairs(wikiframe:GetChildren()) do
+    if v:isA("Model") then
+        v:Destroy()
+    end
+end
+for i,v in pairs(wikiscreenGui.Furnaces.masterscroll.Values:GetChildren()) do
+    if v:isA("TextLabel") then
+        v:Destroy()
+    end
+end
+local item = game:GetService("ReplicatedStorage").Items[name]
+itemportFurn = item:Clone()
+itemportFurn.Parent = viewportFurn
+itemportFurn.PrimaryPart = itemportFurn.Hitbox
+local target = itemportFurn.Hitbox 
+local camera = viewcam
+camera.CameraType = Enum.CameraType.Scriptable
+
+local rotationAngle = Instance.new("NumberValue")
+local tweenComplete = false
+--local modelCF, modelSize = itemportFurn:GetBoundingBox()
+local modelSize = itemportFurn.Hitbox.Size
+local diagonal = 0
+local maxExtent = math.max(modelSize.x, modelSize.y, modelSize.z)
+local tan = math.tan(math.rad(camera.FieldOfView/2))
+
+if (maxExtent == modelSize.x) then
+	diagonal = math.sqrt(modelSize.y*modelSize.y + modelSize.z*modelSize.z)/2
+elseif (maxExtent == modelSize.y) then
+	diagonal = math.sqrt(modelSize.x*modelSize.x + modelSize.z*modelSize.z)/2
+else
+	diagonal = math.sqrt(modelSize.x*modelSize.x + modelSize.y*modelSize.y)/2
+end
+
+local minDist = (maxExtent/2)/tan + diagonal
+local cameraOffset = Vector3.new(0,diagonal*0.75, minDist)
+local rotationTime = 15  -- Time in seconds
+local rotationDegrees = 360
+local rotationRepeatCount = -1  -- Use -1 for infinite repeats
+local lookAtTarget = true  -- Whether the camera tilts to point directly at the target
+ 
+local function updateCamera()
+	if not target then return end
+	camera.Focus = target.CFrame
+	local rotatedCFrame = CFrame.Angles(0, math.rad(rotationAngle.Value), 0)
+	rotatedCFrame = CFrame.new(target.Position) * rotatedCFrame
+	camera.CFrame = rotatedCFrame:ToWorldSpace(CFrame.new(cameraOffset))
+	if lookAtTarget == true then
+		camera.CFrame = CFrame.new(camera.CFrame.Position, target.Position)
+	end
+end
+ 
+local tweenInfo = TweenInfo.new(rotationTime, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, rotationRepeatCount)
+local tween = TweenService:Create(rotationAngle, tweenInfo, {Value=rotationDegrees})
+tween.Completed:Connect(function()
+	tweenComplete = true
+end)
+tween:Play()
+ 
+_G.cam = RunService.RenderStepped:Connect(function()
+	if tweenComplete == false then
+		updateCamera()
+	end
+end)
+local HttpService = game:GetService("HttpService")
+local itemdata = game:HttpGet("https://raw.githubusercontent.com/slendercreeper/MinersHaven/main/wiki%20reference%20furnaces")
+
+local alldata = HttpService:JSONDecode(itemdata)
+local rimd
+for i,v in pairs(alldata) do
+	if i == name then
+        rimd = v
+    end
+end
+local tier = itemportFurn.Tier.Value
+tier = game:GetService("ReplicatedStorage").Tiers[tier].TierName.Value
+tierlabelFurn.Text = tier
+sfeffectsFurn.Size = UDim2.new(0,214,0,102)
+sfdrawbacksFurn.Size = UDim2.new(0,214,0,60)
+sfsourceFurn.Size = UDim2.new(0,214,0,51)
+sfRPFurn.Size = UDim2.new(0,214,0,102)
+effectsTxtFurn.Text = rimd.effects
+drawbacksTxtFurn.Text = rimd.drawbacks
+RPTxtFurn.Text = rimd.rp
+if itemportFurn:FindFirstChild("RebirthRequirement") then
+    sourceTxtFurn.Text = rimd.source .. " (Life " .. itemportFurn.RebirthRequirement.Value .."+)"
+elseif itemportFurn:FindFirstChild("UnlockAt") then
+    sourceTxtFurn.Text = rimd.source .. " (Life " .. itemportFurn.UnlockAt.Value .."+)"
+else   
+    sourceTxtFurn.Text = rimd.source
+end
+if itemportFurn:FindFirstChild("EnchantCost") then
+    for i,v in pairs(itemportFurn.EnchantCost:GetChildren()) do
+        if tonumber(v.Name) ~= nil then
+            for o,r in pairs(game.ReplicatedStorage.Items:GetChildren()) do
+                if r.ItemId.Value == tonumber(v.Name) then
+                    sourceTxtFurn.Text = sourceTxtFurn.Text .. "x" .. v.Value .. " " .. r.Name
+                end
+            end
+        elseif v.Name == "Shards" then
+            sourceTxtFurn.Text = sourceTxtFurn.Text .. v.Value .. " Shards"
+        end
+
+        if i ~= #itemportFurn.EnchantCost:GetChildren() then
+            sourceTxtFurn.Text = sourceTxtFurn.Text .. "\n"
+        end
+    end
+end
+if tier == "Evolved Reborn" or tier == "Adv. Evolution" then
+    for i,v in pairs(game.ReplicatedStorage.Items:GetChildren()) do
+        if v:FindFirstChild("RequiredEvo") then
+            if v.RequiredEvo.Value == itemportFurn.ItemId.Value then
+                local evoshiny = Instance.new("IntValue")
+                evoshiny.Parent = itemportFurn
+                evoshiny.Value = v.ItemId.Value
+                evoshiny.Name = "ShinyId"
+            end
+        end
+    end
+end
+if tier == "Reborn" or tier == "Adv. Reborn" then
+    sourceTxtFurn.Text = rimd.source .. " (Life " .. itemportFurn.ReqLife.Value .."+)"
+    addValueLabelFurn("Rarity", 0, "Rarity: " .. itemportFurn.RebornChance.Value)
+    if itemportFurn:FindFirstChild("ShardSalvagePrice") then
+        addValueLabelFurn("Salvage", 0, "Salvage Yield: " .. itemportFurn.ShardSalvagePrice.Value)
+    end
+    if itemportFurn:FindFirstChild("RebornShopPrice") then
+        addValueLabelFurn("rebshop", 0, "Craftsman Cost: " .. itemportFurn.RebornShopPrice.Value)
+    end
+end
+if tier == "Common" or tier == "Uncommon" or tier == "Rare" or tier == "Super Rare" or tier == "Unique" or tier == "Epic" or tier == "Legendary" or tier == "Mythic" or tier == "Divine" or tier == "Almighty" then
+    addValueLabelFurn("Cost", 0, "Cost: " .. MoneyLib.HandleMoney(itemportFurn.Cost.Value))
+end
+if tier == "Refined" or tier == "Premium" then
+    if itemportFurn:FindFirstChild("Crystals") then
+    addValueLabelFurn("Cost", 0, "Cost: " .. itemportFurn.Crystals.Value .."uC")
+    end
+end
+if itemportFurn:FindFirstChild("BlueprintPrice") then
+    addValueLabelFurn("blueprint", 0, "Blueprint: " .. string.gsub(MoneyLib.HandleMoney(itemportFurn.BlueprintPrice.Value), "%$", "") .. " RP")
+end
+if tier == "Contraband" then
+    addValueLabelFurn("Cost", 0, rimd.cost)
+end
+addValueLabelFurn("FurnType",1, rimd.furntype)
+addValueLabelFurn("RebProof", 1, rimd.reb)
+addValueLabelFurn("SacbProof", 2, rimd.sac)
+addValueLabelFurn("ItemId", 3, "Item Id: " .. itemportFurn.ItemId.Value)
+if itemportFurn:FindFirstChild("ShinyId") then
+    addValueLabelFurn("ShinyId", 3, "Shiny Id: " .. itemportFurn.ShinyId.Value)
+end
+if tier == "Common" or tier == "Uncommon" or tier == "Rare" or tier == "Super Rare" or tier == "Unique" or tier == "Epic" or tier == "Legendary" or tier == "Mythic" or tier == "Divine" or tier == "Almighty" then
+addValueLabelFurn("RP Required", 7, "RP Required: " .. string.gsub(MoneyLib.HandleMoney(itemportFurn.ReqPoints.Value), "%$", ""))
+end
+local oneconv = false
+for i,v in pairs(itemportFurn:GetDescendants()) do
+    if v.Name == "ConveyorSpeed" and oneconv == false then
+        oneconv = true
+        addValueLabelFurn("ConvSpeed", 8, "Conveyor Speed: " .. math.round(v.Value*10) .. "%")
+    end
+end
+if drawbacksTxtFurn.AbsoluteSize.Y < 60 then
+    sfdrawbacksFurn.Size = UDim2.new(0,sfdrawbacksFurn.Size.X.Offset,0,drawbacksTxtFurn.AbsoluteSize.Y+1)
+end
+if effectsTxtFurn.AbsoluteSize.Y < 102 then
+    sfeffectsFurn.Size = UDim2.new(0,sfeffectsFurn.Size.X.Offset,0,effectsTxtFurn.AbsoluteSize.Y+1)
+end
+if sourceTxtFurn.AbsoluteSize.Y < 51 then
+    sfsourceFurn.Size = UDim2.new(0,sfsourceFurn.Size.X.Offset,0,sourceTxtFurn.AbsoluteSize.Y+1)
+end
+if RPTxtFurn.AbsoluteSize.Y < 102 then
+    sfRPFurn.Size = UDim2.new(0,sfRPFurn.Size.X.Offset,0,RPTxtFurn.AbsoluteSize.Y+1)
+end
+sfeffectsFurn.Visible = true
+effectstabFurn.Visible = true
+sfdrawbacksFurn.Visible = true
+drawbackstabFurn.Visible = true
+if rimd.effects == "N/A" then
+    sfeffectsFurn.Visible = false
+    effectstabFurn.Visible = false
+end
+if rimd.drawbacks == "N/A" then
+    sfdrawbacksFurn.Visible = false
+    drawbackstabFurn.Visible = false
+end
+masterscrollFurn.CanvasSize = UDim2.new(0,0,0,masterlayoutFurn.AbsoluteContentSize.Y)
+end
