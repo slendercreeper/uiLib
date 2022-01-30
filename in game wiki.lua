@@ -1660,3 +1660,176 @@ if rimd.drawbacks == "N/A" then
 end
 masterscrollFurn.CanvasSize = UDim2.new(0,0,0,masterlayoutFurn.AbsoluteContentSize.Y)
 end
+
+tierframe = Instance.new("ImageLabel")
+tierframe.Image = "rbxassetid://4641149554"
+tierframe.Size = UDim2.new(0,671.5,0,415)
+tierframe.AnchorPoint = Vector2.new(0.5,0.5)
+tierframe.Position = UDim2.new(0.5,0,0.5,0)
+tierframe.ImageColor3 = stringtocolor(SettingsT.Background)
+tierframe.BackgroundTransparency = 1
+tierframe.ScaleType = "Slice"
+tierframe.SliceCenter = Rect.new(4,4,296,296)
+tierframe.BorderSizePixel = 0
+tierframe.Parent = wikiscreenGui
+tierframe.Name = "TierSelect"
+
+wikiglowtier = Instance.new("ImageLabel")
+wikiglowtier.Name = "Glow"
+wikiglowtier.BackgroundTransparency = 1
+wikiglowtier.Position = UDim2.new(0, -15, 0, -15)
+wikiglowtier.Size = UDim2.new(1, 30, 1, 30)
+wikiglowtier.ZIndex = 0
+wikiglowtier.Image = "rbxassetid://5028857084"
+wikiglowtier.ImageTransparency = 0
+wikiglowtier.ImageColor3 = stringtocolor(SettingsT.Glow)
+wikiglowtier.ScaleType = Enum.ScaleType.Slice
+wikiglowtier.SliceCenter = Rect.new(24, 24, 276, 276)
+wikiglowtier.Parent = tierframe
+wikiglowtier.ZIndex = 1
+
+wikitopbartier = Instance.new("ImageLabel")
+wikitopbartier.Image = "rbxassetid://4595286933"
+wikitopbartier.Size = UDim2.new(1,0,0,38)
+wikitopbartier.Position = UDim2.new(0,0,0,0)
+wikitopbartier.ImageColor3 = stringtocolor(SettingsT.DarkContrast)
+wikitopbartier.BackgroundTransparency = 1
+wikitopbartier.ScaleType = "Slice"
+wikitopbartier.SliceCenter = Rect.new(4,4,296,296)
+wikitopbartier.BorderSizePixel = 0
+wikitopbartier.Parent = tierframe
+
+topbarwikitexttier = Instance.new("TextLabel")
+topbarwikitexttier.Font = Enum.Font.Jura
+topbarwikitexttier.BackgroundTransparency = 1
+topbarwikitexttier.Size = UDim2.new(1,0,0,38)
+topbarwikitexttier.Position = UDim2.new(0,0,0,0)
+topbarwikitexttier.Parent = wikitopbartier
+topbarwikitexttier.Text = "Select By Tier"
+topbarwikitexttier.TextColor3 = stringtocolor(SettingsT.TextColor)
+topbarwikitexttier.TextSize = 18
+
+backtier = Instance.new("TextButton")
+backtier.Parent = tierframe
+backtier.Text = "Back"
+backtier.TextSize = 14
+backtier.TextColor3 = stringtocolor(SettingsT.TextColor)
+backtier.BackgroundColor3 = stringtocolor(SettingsT.DarkContrast)
+backtier.BackgroundTransparency = 1
+backtier.TextTransparency = 1
+backtier.AutoButtonColor = false
+backtier.Position = UDim2.new(0.009,0,0.925,0)
+backtier.Size = UDim2.new(0,60,0,26)
+backtier.Font = Enum.Font.Jura
+backtier.ZIndex = 2
+
+backtiercorn = Instance.new("UICorner")
+backtiercorn.Parent = backtier
+
+sftier = Instance.new("ScrollingFrame")
+sftier.BackgroundColor3 = stringtocolor(SettingsT.Background)
+sftier.BorderSizePixel = 0
+sftier.BackgroundTransparency = 1
+sftier.Parent = tierframe
+sftier.Position = UDim2.new(0,9,0,50)
+sftier.AutomaticCanvasSize = Enum.AutomaticSize.Y
+sftier.ScrollBarImageColor3 = stringtocolor(SettingsT.DarkContrast)
+sftier.ScrollingDirection = "Y"
+sftier.ScrollBarThickness = 3
+sftier.Size = UDim2.new(0,653,0,353)
+sftier.CanvasSize = UDim2.new(0,0,0,0)
+sftier.Name = "ScrollingEffects"
+
+gridlayout = Instance.new("UIGridLayout")
+gridlayout.Parent = sftier
+gridlayout.CellSize = UDim2.new(0,103,0,103)
+gridlayout.CellPadding = UDim2.new(0,5,0,5)
+gridlayout.HorizontalAlignment = "Center"
+gridlayout.SortOrder = "LayoutOrder"
+
+tierlabelName = Instance.new("TextLabel")
+tierlabelName.AnchorPoint = Vector2.new(0.5,0.5)
+tierlabelName.Name = "tierlabelName"
+tierlabelName.AutomaticSize = Enum.AutomaticSize.X
+tierlabelName.Size = UDim2.new(0,0,0,25)
+tierlabelName.Position = UDim2.new(0.5,0,0.5,0)
+tierlabelName.Parent = wikiscreenGui
+tierlabelName.BorderSizePixel = 0
+tierlabelName.BackgroundColor3 = stringtocolor(SettingsT.Background)
+tierlabelName.Visible = false
+tierlabelName.Font = Enum.Font.Jura
+tierlabelName.Text = "Placeholder"
+tierlabelName.TextColor3 = Color3.fromRGB(255,255,255)
+tierlabelName.TextSize = 18
+
+tierlabelcorn = Instance.new("UICorner")
+tierlabelcorn.Parent = tierlabelName
+
+tierlabelpadding = Instance.new("UIPadding")
+tierlabelpadding.Parent = tierlabelName
+tierlabelpadding.PaddingTop = UDim.new(0,5)
+tierlabelpadding.PaddingLeft = UDim.new(0,5)
+tierlabelpadding.PaddingRight = UDim.new(0,5)
+tierlabelpadding.PaddingBottom = UDim.new(0,5)
+
+function iteminvui(name)
+	local tiercolor = game.ReplicatedStorage.Tiers[game.ReplicatedStorage.Items[name].Tier.Value].TierBackground.Value
+	local itembutton = Instance.new("TextButton")
+	itembutton.Parent = sftier
+	itembutton.Text = ""
+	itembutton.TextSize = 14
+	itembutton.TextColor3 = stringtocolor(SettingsT.TextColor)
+	itembutton.BackgroundColor3 = stringtocolor(SettingsT.DarkContrast)
+    itembutton.AutoButtonColor = false
+	itembutton.BackgroundTransparency = 0
+	itembutton.TextTransparency = 1
+	itembutton.Position = UDim2.new(0.027,0,0.033,0)
+	itembutton.Size = UDim2.new(0,200,0,50)
+	itembutton.Font = Enum.Font.Jura
+
+	local round = Instance.new("UICorner")
+	round.Parent = itembutton
+
+	local imagea = Instance.new("ImageLabel")
+	imagea.AnchorPoint = Vector2.new(0.5,0.5)
+	imagea.Position = UDim2.new(0.5,0,0.5,0)
+	imagea.BackgroundTransparency = 1
+	imagea.Parent = itembutton
+	imagea.Size = UDim2.new(1,-6,1,-6)
+	imagea.Image = "rbxassetid://"..game.ReplicatedStorage.Items[name].ThumbnailId.Value
+
+	local rounda = Instance.new("UICorner")
+	rounda.Parent = imagea
+	itembutton.MouseEnter:Connect(function(x,y)
+		tierlabelName.Text = name
+		tierlabelName.Visible = true
+	end)
+	itembutton.MouseLeave:Connect(function(x,y)
+		tierlabelName.Visible = false
+	end)
+	itembutton.MouseMoved:Connect(function(x,y)
+		tierlabelName.Text = name
+		tierlabelName.Visible = true
+		tierlabelName.Position = UDim2.new(0,x+tierlabelName.AbsoluteSize.X/2+10,0,y)
+	end)
+end
+
+function newTier(tiername)
+    for i,v in pairs(sftier:GetChildren()) do
+        if v:IsA("TextButton") then
+            v:Destroy()
+        end
+    end
+    local rtiernum
+    for i,v in pairs(game.ReplicatedStorage.Tiers:GetChildren()) do
+        if v.TierName.Value == tiername then
+            rtiernum = game.ReplicatedStorage.Tiers[v.Name]
+            topbarwikitexttier.Text = v.TierName.Value
+        end
+    end
+	for o,r in pairs(game.ReplicatedStorage.Items:GetChildren()) do
+		if tostring(r.Tier.Value) == rtiernum.Name then
+			iteminvui(r.Name)
+		end
+	end
+end
