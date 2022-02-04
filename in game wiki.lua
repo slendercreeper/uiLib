@@ -17,6 +17,7 @@ wikiframe.SliceCenter = Rect.new(4,4,296,296)
 wikiframe.BorderSizePixel = 0
 wikiframe.Parent = wikiscreenGui
 wikiframe.Name = "Upgraders"
+wikiframe.Visible = false
 
 wikiglow = Instance.new("ImageLabel")
 wikiglow.Name = "Glow"
@@ -533,6 +534,7 @@ wikiframeMine.SliceCenter = Rect.new(4,4,296,296)
 wikiframeMine.BorderSizePixel = 0
 wikiframeMine.Parent = wikiscreenGui
 wikiframeMine.Name = "Mines"
+wikiframeMine.Visible = false
 
 wikiglowMine = Instance.new("ImageLabel")
 wikiglowMine.Name = "Glow"
@@ -1147,6 +1149,7 @@ wikiframeFurn.SliceCenter = Rect.new(4,4,296,296)
 wikiframeFurn.BorderSizePixel = 0
 wikiframeFurn.Parent = wikiscreenGui
 wikiframeFurn.Name = "Furnaces"
+wikiframeFurn.Visible = false
 
 wikiglowFurn = Instance.new("ImageLabel")
 wikiglowFurn.Name = "Glow"
@@ -1673,6 +1676,7 @@ tierframe.SliceCenter = Rect.new(4,4,296,296)
 tierframe.BorderSizePixel = 0
 tierframe.Parent = wikiscreenGui
 tierframe.Name = "TierSelect"
+tierframe.Visible = false
 
 wikiglowtier = Instance.new("ImageLabel")
 wikiglowtier.Name = "Glow"
@@ -1772,6 +1776,14 @@ tierlabelpadding.PaddingLeft = UDim.new(0,5)
 tierlabelpadding.PaddingRight = UDim.new(0,5)
 tierlabelpadding.PaddingBottom = UDim.new(0,5)
 
+HttpService = game:GetService("HttpService")
+itemdataTierTabUpg = game:HttpGet("https://raw.githubusercontent.com/slendercreeper/MinersHaven/main/wiki%20reference")
+alldataTierTabUpg = HttpService:JSONDecode(itemdataTierTabUpg)
+itemdataTierTabMine = game:HttpGet("https://raw.githubusercontent.com/slendercreeper/MinersHaven/main/wiki%20reference%20mines")
+alldataTierTabMine = HttpService:JSONDecode(itemdataTierTabMine)
+itemdataTierTabFurn = game:HttpGet("https://raw.githubusercontent.com/slendercreeper/MinersHaven/main/wiki%20reference%20furnaces")
+alldataTierTabFurn = HttpService:JSONDecode(itemdataTierTabFurn)
+
 function iteminvui(name)
 	local tiercolor = game.ReplicatedStorage.Tiers[game.ReplicatedStorage.Items[name].Tier.Value].TierBackground.Value
 	local itembutton = Instance.new("TextButton")
@@ -1811,6 +1823,590 @@ function iteminvui(name)
 		tierlabelName.Text = name
 		tierlabelName.Visible = true
 		tierlabelName.Position = UDim2.new(0,x+tierlabelName.AbsoluteSize.X/2+10,0,y)
+	end)
+    itembutton.MouseButton1Click:Connect(function()
+        if alldataTierTabUpg[name] ~= nil then
+        tierlabelName.Visible = false
+        wikiframe.AnchorPoint = Vector2.new(0,0)
+        wikiframe.Position = tierframe.Position
+        screenframe.Visible = true
+        tierlabelName.Visible = false
+        screenframe.Position = tierframe.Position + UDim2.new(0,0,0,22)
+        _G.followdragTier = tierframe:GetPropertyChangedSignal("Position"):Connect(function(value)
+            wikiframe.AnchorPoint = Vector2.new(0,0)
+            wikiframe.Position = tierframe.Position
+            screenframe.Position = tierframe.Position + UDim2.new(0,0,0,22)
+        end)
+        if _G.cam ~= nil then
+            _G.cam:Disconnect()
+        end
+        newItem(name)
+        wikiframeTrans = {}
+        for i,v in pairs(wikiframe:GetDescendants()) do
+            if v:IsA("ImageLabel") then
+                table.insert(wikiframeTrans, v.ImageTransparency)
+                v.ImageTransparency = 1
+            elseif v:IsA("TextLabel") then
+                table.insert(wikiframeTrans, v.TextTransparency)
+                v.TextTransparency = 1
+                table.insert(wikiframeTrans, v.BackgroundTransparency)
+                v.BackgroundTransparency = 1
+            elseif v:IsA("ScrollingFrame") then
+                table.insert(wikiframeTrans, v.ScrollBarImageTransparency)
+                v.ScrollBarImageTransparency = 1
+            elseif v:IsA("TextBox") then
+                table.insert(wikiframeTrans, v.TextTransparency)
+                v.TextTransparency = 1
+            elseif v:IsA("ImageButton") then
+                table.insert(wikiframeTrans, v.ImageTransparency)
+                v.ImageTransparency = 1
+            elseif v:IsA("ViewportFrame") then
+                table.insert(wikiframeTrans, v.ImageTransparency)
+                v.ImageTransparency = 1
+                table.insert(wikiframeTrans, v.BackgroundTransparency)
+                v.BackgroundTransparency = 1
+            elseif v:IsA("Frame") then
+                table.insert(wikiframeTrans, v.BackgroundTransparency)
+                v.BackgroundTransparency = 1
+            end
+        end
+        wikiframe.Visible = true
+        for i,v in pairs(tierframe:GetDescendants()) do
+            if v:IsA("ImageLabel") then
+                wikitranscount = wikitranscount + 1
+                local tweentest = TweenService:Create(v, TweenInfo.new(1), {ImageTransparency = 1})
+                tweentest:Play()
+            elseif v:IsA("TextLabel") then
+                wikitranscount = wikitranscount + 1
+                local tweentest = TweenService:Create(v, TweenInfo.new(1), {TextTransparency = 1})
+                tweentest:Play()
+                wikitranscount = wikitranscount + 1
+                local tweentest = TweenService:Create(v, TweenInfo.new(1), {BackgroundTransparency = 1})
+                tweentest:Play()
+            elseif v:IsA("ScrollingFrame") then
+                wikitranscount = wikitranscount + 1
+                local tweentest = TweenService:Create(v, TweenInfo.new(1), {ScrollBarImageTransparency = 1})
+                tweentest:Play()
+            elseif v:IsA("TextBox") then
+                wikitranscount = wikitranscount + 1
+                local tweentest = TweenService:Create(v, TweenInfo.new(1), {TextTransparency = 1})
+                tweentest:Play()
+            elseif v:IsA("ImageButton") then
+                wikitranscount = wikitranscount + 1
+                local tweentest = TweenService:Create(v, TweenInfo.new(1), {ImageTransparency = 1})
+                tweentest:Play()
+            elseif v:IsA("TextButton") then
+                wikitranscount = wikitranscount + 1
+                local tweentest = TweenService:Create(v, TweenInfo.new(1), {BackgroundTransparency = 1})
+                tweentest:Play()
+            elseif v:IsA("ViewportFrame") then
+                wikitranscount = wikitranscount + 1
+                local tweentest = TweenService:Create(v, TweenInfo.new(1), {ImageTransparency = 1})
+                tweentest:Play()
+                wikitranscount = wikitranscount + 1
+                local tweentest = TweenService:Create(v, TweenInfo.new(1), {BackgroundTransparency = 1})
+                tweentest:Play()
+            elseif v:IsA("Frame") then
+                wikitranscount = wikitranscount + 1
+                local tweentest = TweenService:Create(v, TweenInfo.new(1), {BackgroundTransparency = 1})
+                tweentest:Play()
+            end
+        end
+        local tweenback = TweenService:Create(backtier, TweenInfo.new(1), {BackgroundTransparency = 1, TextTransparency = 1})
+        tweenback:Play()
+        local tweenglow = TweenService:Create(wikiglow, TweenInfo.new(1), {ImageTransparency = 0})
+        tweenglow:Play()
+        wait(1)
+        tierframe.Visible = false
+        _G.followdragTier:Disconnect()
+        screenframe.Visible = false
+        wikitranscount = 0
+        for i,v in pairs(sftier:GetChildren()) do
+            if v:IsA("TextButton") then
+                v:Destroy()
+            end
+        end
+        for i,v in pairs(tierframe:GetDescendants()) do
+        if not v.Parent:IsA("SurfaceGui") and not v.Parent:IsA("BillboardGui") then
+        if v:IsA("ImageLabel") then
+            --print(v, v.Parent)
+            wikitranscount = wikitranscount + 1
+            local tweentest = TweenService:Create(v, TweenInfo.new(0.1), {ImageTransparency = tierframeTransOG[wikitranscount]})
+            tweentest:Play()
+        elseif v:IsA("TextLabel") then
+            print(v, v.Parent)
+            wikitranscount = wikitranscount + 1
+            local tweentest = TweenService:Create(v, TweenInfo.new(0.1), {TextTransparency = tierframeTransOG[wikitranscount]})
+            tweentest:Play()
+            print(v, v.Parent)
+            wikitranscount = wikitranscount + 1
+            local tweentest = TweenService:Create(v, TweenInfo.new(0.1), {BackgroundTransparency = tierframeTransOG[wikitranscount]})
+            tweentest:Play()
+        elseif v:IsA("ScrollingFrame") then
+            print(v, v.Parent)
+            wikitranscount = wikitranscount + 1
+            local tweentest = TweenService:Create(v, TweenInfo.new(0.1), {ScrollBarImageTransparency = tierframeTransOG[wikitranscount]})
+            tweentest:Play()
+        elseif v:IsA("TextBox") then
+            print(v, v.Parent)
+            wikitranscount = wikitranscount + 1
+            local tweentest = TweenService:Create(v, TweenInfo.new(0.1), {TextTransparency = tierframeTransOG[wikitranscount]})
+            tweentest:Play()
+        elseif v:IsA("ImageButton") then
+            print(v, v.Parent)
+            wikitranscount = wikitranscount + 1
+            local tweentest = TweenService:Create(v, TweenInfo.new(0.1), {ImageTransparency = tierframeTransOG[wikitranscount]})
+            tweentest:Play()
+        elseif v:IsA("ViewportFrame") then
+            print(v, v.Parent)
+            wikitranscount = wikitranscount + 1
+            local tweentest = TweenService:Create(v, TweenInfo.new(0.1), {ImageTransparency = tierframeTransOG[wikitranscount]})
+            tweentest:Play()
+            print(v, v.Parent)
+            wikitranscount = wikitranscount + 1
+            local tweentest = TweenService:Create(v, TweenInfo.new(0.1), {BackgroundTransparency = tierframeTransOG[wikitranscount]})
+            tweentest:Play()
+        elseif v:IsA("Frame") then
+            print(v, v.Parent)
+            wikitranscount = wikitranscount + 1
+            local tweentest = TweenService:Create(v, TweenInfo.new(0.1), {BackgroundTransparency = tierframeTransOG[wikitranscount]})
+            tweentest:Play()
+        end
+        end
+        end
+        wikitranscount = 0
+for i,v in pairs(wikiframe:GetDescendants()) do
+    if v:IsA("ImageLabel") then
+        wikitranscount = wikitranscount + 1
+        local tweentest = TweenService:Create(v, TweenInfo.new(1), {ImageTransparency = wikiframeTrans[wikitranscount]})
+        tweentest:Play()
+    elseif v:IsA("TextLabel") then
+        wikitranscount = wikitranscount + 1
+        local tweentest = TweenService:Create(v, TweenInfo.new(1), {TextTransparency = wikiframeTrans[wikitranscount]})
+        tweentest:Play()
+        wikitranscount = wikitranscount + 1
+        local tweentest = TweenService:Create(v, TweenInfo.new(1), {BackgroundTransparency = wikiframeTrans[wikitranscount]})
+        tweentest:Play()
+    elseif v:IsA("ScrollingFrame") then
+        wikitranscount = wikitranscount + 1
+        local tweentest = TweenService:Create(v, TweenInfo.new(1), {ScrollBarImageTransparency = wikiframeTrans[wikitranscount]})
+        tweentest:Play()
+    elseif v:IsA("TextBox") then
+        wikitranscount = wikitranscount + 1
+        local tweentest = TweenService:Create(v, TweenInfo.new(1), {TextTransparency = wikiframeTrans[wikitranscount]})
+        tweentest:Play()
+    elseif v:IsA("ImageButton") then
+        wikitranscount = wikitranscount + 1
+        local tweentest = TweenService:Create(v, TweenInfo.new(1), {ImageTransparency = wikiframeTrans[wikitranscount]})
+        tweentest:Play()
+    elseif v:IsA("ViewportFrame") then
+        wikitranscount = wikitranscount + 1
+        local tweentest = TweenService:Create(v, TweenInfo.new(1), {ImageTransparency = wikiframeTrans[wikitranscount]})
+        tweentest:Play()
+        wikitranscount = wikitranscount + 1
+        local tweentest = TweenService:Create(v, TweenInfo.new(1), {BackgroundTransparency = wikiframeTrans[wikitranscount]})
+        tweentest:Play()
+    elseif v:IsA("Frame") then
+        wikitranscount = wikitranscount + 1
+        local tweentest = TweenService:Create(v, TweenInfo.new(1), {BackgroundTransparency = wikiframeTrans[wikitranscount]})
+        tweentest:Play()
+    end
+end
+local tweenback = TweenService:Create(backwiki, TweenInfo.new(1), {BackgroundTransparency = 0, TextTransparency = 0})
+tweenback:Play()
+if itemport:FindFirstChild("ShinyId") then
+    local tweenshiny = TweenService:Create(shinywiki, TweenInfo.new(1), {BackgroundTransparency = 0, TextTransparency = 0})
+    tweenshiny:Play()
+end
+elseif alldataTierTabMine[name] ~= nil then
+    tierlabelName.Visible = false
+    wikiframeMine.AnchorPoint = Vector2.new(0,0)
+    wikiframeMine.Position = tierframe.Position
+    screenframe.Visible = true
+    tierlabelName.Visible = false
+    screenframe.Position = tierframe.Position + UDim2.new(0,0,0,22)
+    _G.followdragTier = tierframe:GetPropertyChangedSignal("Position"):Connect(function(value)
+        wikiframeMine.AnchorPoint = Vector2.new(0,0)
+        wikiframeMine.Position = tierframe.Position
+        screenframe.Position = tierframe.Position + UDim2.new(0,0,0,22)
+    end)
+    if _G.cam ~= nil then
+        _G.cam:Disconnect()
+    end
+    newMine(name)
+    wikiframeTrans = {}
+    for i,v in pairs(wikiframeMine:GetDescendants()) do
+        if v:IsA("ImageLabel") then
+            table.insert(wikiframeTrans, v.ImageTransparency)
+            v.ImageTransparency = 1
+        elseif v:IsA("TextLabel") then
+            table.insert(wikiframeTrans, v.TextTransparency)
+            v.TextTransparency = 1
+            table.insert(wikiframeTrans, v.BackgroundTransparency)
+            v.BackgroundTransparency = 1
+        elseif v:IsA("ScrollingFrame") then
+            table.insert(wikiframeTrans, v.ScrollBarImageTransparency)
+            v.ScrollBarImageTransparency = 1
+        elseif v:IsA("TextBox") then
+            table.insert(wikiframeTrans, v.TextTransparency)
+            v.TextTransparency = 1
+        elseif v:IsA("ImageButton") then
+            table.insert(wikiframeTrans, v.ImageTransparency)
+            v.ImageTransparency = 1
+        elseif v:IsA("ViewportFrame") then
+            table.insert(wikiframeTrans, v.ImageTransparency)
+            v.ImageTransparency = 1
+            table.insert(wikiframeTrans, v.BackgroundTransparency)
+            v.BackgroundTransparency = 1
+        elseif v:IsA("Frame") then
+            table.insert(wikiframeTrans, v.BackgroundTransparency)
+            v.BackgroundTransparency = 1
+        end
+    end
+    wikiframeMine.Visible = true
+    for i,v in pairs(tierframe:GetDescendants()) do
+        if v:IsA("ImageLabel") then
+            wikitranscount = wikitranscount + 1
+            local tweentest = TweenService:Create(v, TweenInfo.new(1), {ImageTransparency = 1})
+            tweentest:Play()
+        elseif v:IsA("TextLabel") then
+            wikitranscount = wikitranscount + 1
+            local tweentest = TweenService:Create(v, TweenInfo.new(1), {TextTransparency = 1})
+            tweentest:Play()
+            wikitranscount = wikitranscount + 1
+            local tweentest = TweenService:Create(v, TweenInfo.new(1), {BackgroundTransparency = 1})
+            tweentest:Play()
+        elseif v:IsA("ScrollingFrame") then
+            wikitranscount = wikitranscount + 1
+            local tweentest = TweenService:Create(v, TweenInfo.new(1), {ScrollBarImageTransparency = 1})
+            tweentest:Play()
+        elseif v:IsA("TextBox") then
+            wikitranscount = wikitranscount + 1
+            local tweentest = TweenService:Create(v, TweenInfo.new(1), {TextTransparency = 1})
+            tweentest:Play()
+        elseif v:IsA("ImageButton") then
+            wikitranscount = wikitranscount + 1
+            local tweentest = TweenService:Create(v, TweenInfo.new(1), {ImageTransparency = 1})
+            tweentest:Play()
+        elseif v:IsA("TextButton") then
+            wikitranscount = wikitranscount + 1
+            local tweentest = TweenService:Create(v, TweenInfo.new(1), {BackgroundTransparency = 1})
+            tweentest:Play()
+        elseif v:IsA("ViewportFrame") then
+            wikitranscount = wikitranscount + 1
+            local tweentest = TweenService:Create(v, TweenInfo.new(1), {ImageTransparency = 1})
+            tweentest:Play()
+            wikitranscount = wikitranscount + 1
+            local tweentest = TweenService:Create(v, TweenInfo.new(1), {BackgroundTransparency = 1})
+            tweentest:Play()
+        elseif v:IsA("Frame") then
+            wikitranscount = wikitranscount + 1
+            local tweentest = TweenService:Create(v, TweenInfo.new(1), {BackgroundTransparency = 1})
+            tweentest:Play()
+        end
+    end
+    local tweenback = TweenService:Create(backtier, TweenInfo.new(1), {BackgroundTransparency = 1, TextTransparency = 1})
+    tweenback:Play()
+    local tweenglow = TweenService:Create(wikiglowMine, TweenInfo.new(1), {ImageTransparency = 0}) 
+    tweenglow:Play()
+    wait(1)
+    tierframe.Visible = false
+    _G.followdragTier:Disconnect()
+    screenframe.Visible = false
+    wikitranscount = 0
+    for i,v in pairs(sftier:GetChildren()) do
+        if v:IsA("TextButton") then
+            v:Destroy()
+        end
+    end
+    for i,v in pairs(tierframe:GetDescendants()) do
+    if not v.Parent:IsA("SurfaceGui") and not v.Parent:IsA("BillboardGui") then
+    if v:IsA("ImageLabel") then
+        --print(v, v.Parent)
+        wikitranscount = wikitranscount + 1
+        local tweentest = TweenService:Create(v, TweenInfo.new(0.1), {ImageTransparency = tierframeTransOG[wikitranscount]})
+        tweentest:Play()
+    elseif v:IsA("TextLabel") then
+        print(v, v.Parent)
+        wikitranscount = wikitranscount + 1
+        local tweentest = TweenService:Create(v, TweenInfo.new(0.1), {TextTransparency = tierframeTransOG[wikitranscount]})
+        tweentest:Play()
+        print(v, v.Parent)
+        wikitranscount = wikitranscount + 1
+        local tweentest = TweenService:Create(v, TweenInfo.new(0.1), {BackgroundTransparency = tierframeTransOG[wikitranscount]})
+        tweentest:Play()
+    elseif v:IsA("ScrollingFrame") then
+        print(v, v.Parent)
+        wikitranscount = wikitranscount + 1
+        local tweentest = TweenService:Create(v, TweenInfo.new(0.1), {ScrollBarImageTransparency = tierframeTransOG[wikitranscount]})
+        tweentest:Play()
+    elseif v:IsA("TextBox") then
+        print(v, v.Parent)
+        wikitranscount = wikitranscount + 1
+        local tweentest = TweenService:Create(v, TweenInfo.new(0.1), {TextTransparency = tierframeTransOG[wikitranscount]})
+        tweentest:Play()
+    elseif v:IsA("ImageButton") then
+        print(v, v.Parent)
+        wikitranscount = wikitranscount + 1
+        local tweentest = TweenService:Create(v, TweenInfo.new(0.1), {ImageTransparency = tierframeTransOG[wikitranscount]})
+        tweentest:Play()
+    elseif v:IsA("ViewportFrame") then
+        print(v, v.Parent)
+        wikitranscount = wikitranscount + 1
+        local tweentest = TweenService:Create(v, TweenInfo.new(0.1), {ImageTransparency = tierframeTransOG[wikitranscount]})
+        tweentest:Play()
+        print(v, v.Parent)
+        wikitranscount = wikitranscount + 1
+        local tweentest = TweenService:Create(v, TweenInfo.new(0.1), {BackgroundTransparency = tierframeTransOG[wikitranscount]})
+        tweentest:Play()
+    elseif v:IsA("Frame") then
+        print(v, v.Parent)
+        wikitranscount = wikitranscount + 1
+        local tweentest = TweenService:Create(v, TweenInfo.new(0.1), {BackgroundTransparency = tierframeTransOG[wikitranscount]})
+        tweentest:Play()
+    end
+    end
+    end
+    wikitranscount = 0
+for i,v in pairs(wikiframeMine:GetDescendants()) do
+if v:IsA("ImageLabel") then
+    wikitranscount = wikitranscount + 1
+    local tweentest = TweenService:Create(v, TweenInfo.new(1), {ImageTransparency = wikiframeTrans[wikitranscount]})
+    tweentest:Play()
+elseif v:IsA("TextLabel") then
+    wikitranscount = wikitranscount + 1
+    local tweentest = TweenService:Create(v, TweenInfo.new(1), {TextTransparency = wikiframeTrans[wikitranscount]})
+    tweentest:Play()
+    wikitranscount = wikitranscount + 1
+    local tweentest = TweenService:Create(v, TweenInfo.new(1), {BackgroundTransparency = wikiframeTrans[wikitranscount]})
+    tweentest:Play()
+elseif v:IsA("ScrollingFrame") then
+    wikitranscount = wikitranscount + 1
+    local tweentest = TweenService:Create(v, TweenInfo.new(1), {ScrollBarImageTransparency = wikiframeTrans[wikitranscount]})
+    tweentest:Play()
+elseif v:IsA("TextBox") then
+    wikitranscount = wikitranscount + 1
+    local tweentest = TweenService:Create(v, TweenInfo.new(1), {TextTransparency = wikiframeTrans[wikitranscount]})
+    tweentest:Play()
+elseif v:IsA("ImageButton") then
+    wikitranscount = wikitranscount + 1
+    local tweentest = TweenService:Create(v, TweenInfo.new(1), {ImageTransparency = wikiframeTrans[wikitranscount]})
+    tweentest:Play()
+elseif v:IsA("ViewportFrame") then
+    wikitranscount = wikitranscount + 1
+    local tweentest = TweenService:Create(v, TweenInfo.new(1), {ImageTransparency = wikiframeTrans[wikitranscount]})
+    tweentest:Play()
+    wikitranscount = wikitranscount + 1
+    local tweentest = TweenService:Create(v, TweenInfo.new(1), {BackgroundTransparency = wikiframeTrans[wikitranscount]})
+    tweentest:Play()
+elseif v:IsA("Frame") then
+    wikitranscount = wikitranscount + 1
+    local tweentest = TweenService:Create(v, TweenInfo.new(1), {BackgroundTransparency = wikiframeTrans[wikitranscount]})
+    tweentest:Play()
+end
+end
+local tweenback = TweenService:Create(backwikiMine, TweenInfo.new(1), {BackgroundTransparency = 0, TextTransparency = 0})
+tweenback:Play()
+if itemportMine:FindFirstChild("ShinyId") then
+local tweenshiny = TweenService:Create(shinywikiMine, TweenInfo.new(1), {BackgroundTransparency = 0, TextTransparency = 0})
+tweenshiny:Play()
+end
+elseif alldataTierTabFurn[name] ~= nil then
+    tierlabelName.Visible = false
+    wikiframeFurn.AnchorPoint = Vector2.new(0,0)
+    wikiframeFurn.Position = tierframe.Position
+    screenframe.Visible = true
+    tierlabelName.Visible = false
+    screenframe.Position = tierframe.Position + UDim2.new(0,0,0,22)
+    _G.followdragTier = tierframe:GetPropertyChangedSignal("Position"):Connect(function(value)
+        wikiframeFurn.AnchorPoint = Vector2.new(0,0)
+        wikiframeFurn.Position = tierframe.Position
+        screenframe.Position = tierframe.Position + UDim2.new(0,0,0,22)
+    end)
+    if _G.cam ~= nil then
+        _G.cam:Disconnect()
+    end
+    newFurn(name)
+    wikiframeTrans = {}
+    for i,v in pairs(wikiframeFurn:GetDescendants()) do
+        if v:IsA("ImageLabel") then
+            table.insert(wikiframeTrans, v.ImageTransparency)
+            v.ImageTransparency = 1
+        elseif v:IsA("TextLabel") then
+            table.insert(wikiframeTrans, v.TextTransparency)
+            v.TextTransparency = 1
+            table.insert(wikiframeTrans, v.BackgroundTransparency)
+            v.BackgroundTransparency = 1
+        elseif v:IsA("ScrollingFrame") then
+            table.insert(wikiframeTrans, v.ScrollBarImageTransparency)
+            v.ScrollBarImageTransparency = 1
+        elseif v:IsA("TextBox") then
+            table.insert(wikiframeTrans, v.TextTransparency)
+            v.TextTransparency = 1
+        elseif v:IsA("ImageButton") then
+            table.insert(wikiframeTrans, v.ImageTransparency)
+            v.ImageTransparency = 1
+        elseif v:IsA("ViewportFrame") then
+            table.insert(wikiframeTrans, v.ImageTransparency)
+            v.ImageTransparency = 1
+            table.insert(wikiframeTrans, v.BackgroundTransparency)
+            v.BackgroundTransparency = 1
+        elseif v:IsA("Frame") then
+            table.insert(wikiframeTrans, v.BackgroundTransparency)
+            v.BackgroundTransparency = 1
+        end
+    end
+    wikiframeFurn.Visible = true
+    for i,v in pairs(tierframe:GetDescendants()) do
+        if v:IsA("ImageLabel") then
+            wikitranscount = wikitranscount + 1
+            local tweentest = TweenService:Create(v, TweenInfo.new(1), {ImageTransparency = 1})
+            tweentest:Play()
+        elseif v:IsA("TextLabel") then
+            wikitranscount = wikitranscount + 1
+            local tweentest = TweenService:Create(v, TweenInfo.new(1), {TextTransparency = 1})
+            tweentest:Play()
+            wikitranscount = wikitranscount + 1
+            local tweentest = TweenService:Create(v, TweenInfo.new(1), {BackgroundTransparency = 1})
+            tweentest:Play()
+        elseif v:IsA("ScrollingFrame") then
+            wikitranscount = wikitranscount + 1
+            local tweentest = TweenService:Create(v, TweenInfo.new(1), {ScrollBarImageTransparency = 1})
+            tweentest:Play()
+        elseif v:IsA("TextBox") then
+            wikitranscount = wikitranscount + 1
+            local tweentest = TweenService:Create(v, TweenInfo.new(1), {TextTransparency = 1})
+            tweentest:Play()
+        elseif v:IsA("ImageButton") then
+            wikitranscount = wikitranscount + 1
+            local tweentest = TweenService:Create(v, TweenInfo.new(1), {ImageTransparency = 1})
+            tweentest:Play()
+        elseif v:IsA("TextButton") then
+            wikitranscount = wikitranscount + 1
+            local tweentest = TweenService:Create(v, TweenInfo.new(1), {BackgroundTransparency = 1})
+            tweentest:Play()
+        elseif v:IsA("ViewportFrame") then
+            wikitranscount = wikitranscount + 1
+            local tweentest = TweenService:Create(v, TweenInfo.new(1), {ImageTransparency = 1})
+            tweentest:Play()
+            wikitranscount = wikitranscount + 1
+            local tweentest = TweenService:Create(v, TweenInfo.new(1), {BackgroundTransparency = 1})
+            tweentest:Play()
+        elseif v:IsA("Frame") then
+            wikitranscount = wikitranscount + 1
+            local tweentest = TweenService:Create(v, TweenInfo.new(1), {BackgroundTransparency = 1})
+            tweentest:Play()
+        end
+    end
+    local tweenback = TweenService:Create(backtier, TweenInfo.new(1), {BackgroundTransparency = 1, TextTransparency = 1})
+    tweenback:Play()
+    local tweenglow = TweenService:Create(wikiglowFurn, TweenInfo.new(1), {ImageTransparency = 0}) 
+    tweenglow:Play()
+    wait(1)
+    tierframe.Visible = false
+    _G.followdragTier:Disconnect()
+    screenframe.Visible = false
+    wikitranscount = 0
+    for i,v in pairs(sftier:GetChildren()) do
+        if v:IsA("TextButton") then
+            v:Destroy()
+        end
+    end
+    for i,v in pairs(tierframe:GetDescendants()) do
+    if not v.Parent:IsA("SurfaceGui") and not v.Parent:IsA("BillboardGui") then
+    if v:IsA("ImageLabel") then
+        --print(v, v.Parent)
+        wikitranscount = wikitranscount + 1
+        local tweentest = TweenService:Create(v, TweenInfo.new(0.1), {ImageTransparency = tierframeTransOG[wikitranscount]})
+        tweentest:Play()
+    elseif v:IsA("TextLabel") then
+        print(v, v.Parent)
+        wikitranscount = wikitranscount + 1
+        local tweentest = TweenService:Create(v, TweenInfo.new(0.1), {TextTransparency = tierframeTransOG[wikitranscount]})
+        tweentest:Play()
+        print(v, v.Parent)
+        wikitranscount = wikitranscount + 1
+        local tweentest = TweenService:Create(v, TweenInfo.new(0.1), {BackgroundTransparency = tierframeTransOG[wikitranscount]})
+        tweentest:Play()
+    elseif v:IsA("ScrollingFrame") then
+        print(v, v.Parent)
+        wikitranscount = wikitranscount + 1
+        local tweentest = TweenService:Create(v, TweenInfo.new(0.1), {ScrollBarImageTransparency = tierframeTransOG[wikitranscount]})
+        tweentest:Play()
+    elseif v:IsA("TextBox") then
+        print(v, v.Parent)
+        wikitranscount = wikitranscount + 1
+        local tweentest = TweenService:Create(v, TweenInfo.new(0.1), {TextTransparency = tierframeTransOG[wikitranscount]})
+        tweentest:Play()
+    elseif v:IsA("ImageButton") then
+        print(v, v.Parent)
+        wikitranscount = wikitranscount + 1
+        local tweentest = TweenService:Create(v, TweenInfo.new(0.1), {ImageTransparency = tierframeTransOG[wikitranscount]})
+        tweentest:Play()
+    elseif v:IsA("ViewportFrame") then
+        print(v, v.Parent)
+        wikitranscount = wikitranscount + 1
+        local tweentest = TweenService:Create(v, TweenInfo.new(0.1), {ImageTransparency = tierframeTransOG[wikitranscount]})
+        tweentest:Play()
+        print(v, v.Parent)
+        wikitranscount = wikitranscount + 1
+        local tweentest = TweenService:Create(v, TweenInfo.new(0.1), {BackgroundTransparency = tierframeTransOG[wikitranscount]})
+        tweentest:Play()
+    elseif v:IsA("Frame") then
+        print(v, v.Parent)
+        wikitranscount = wikitranscount + 1
+        local tweentest = TweenService:Create(v, TweenInfo.new(0.1), {BackgroundTransparency = tierframeTransOG[wikitranscount]})
+        tweentest:Play()
+    end
+    end
+    end
+    wikitranscount = 0
+for i,v in pairs(wikiframeFurn:GetDescendants()) do
+if v:IsA("ImageLabel") then
+    wikitranscount = wikitranscount + 1
+    local tweentest = TweenService:Create(v, TweenInfo.new(1), {ImageTransparency = wikiframeTrans[wikitranscount]})
+    tweentest:Play()
+elseif v:IsA("TextLabel") then
+    wikitranscount = wikitranscount + 1
+    local tweentest = TweenService:Create(v, TweenInfo.new(1), {TextTransparency = wikiframeTrans[wikitranscount]})
+    tweentest:Play()
+    wikitranscount = wikitranscount + 1
+    local tweentest = TweenService:Create(v, TweenInfo.new(1), {BackgroundTransparency = wikiframeTrans[wikitranscount]})
+    tweentest:Play()
+elseif v:IsA("ScrollingFrame") then
+    wikitranscount = wikitranscount + 1
+    local tweentest = TweenService:Create(v, TweenInfo.new(1), {ScrollBarImageTransparency = wikiframeTrans[wikitranscount]})
+    tweentest:Play()
+elseif v:IsA("TextBox") then
+    wikitranscount = wikitranscount + 1
+    local tweentest = TweenService:Create(v, TweenInfo.new(1), {TextTransparency = wikiframeTrans[wikitranscount]})
+    tweentest:Play()
+elseif v:IsA("ImageButton") then
+    wikitranscount = wikitranscount + 1
+    local tweentest = TweenService:Create(v, TweenInfo.new(1), {ImageTransparency = wikiframeTrans[wikitranscount]})
+    tweentest:Play()
+elseif v:IsA("ViewportFrame") then
+    wikitranscount = wikitranscount + 1
+    local tweentest = TweenService:Create(v, TweenInfo.new(1), {ImageTransparency = wikiframeTrans[wikitranscount]})
+    tweentest:Play()
+    wikitranscount = wikitranscount + 1
+    local tweentest = TweenService:Create(v, TweenInfo.new(1), {BackgroundTransparency = wikiframeTrans[wikitranscount]})
+    tweentest:Play()
+elseif v:IsA("Frame") then
+    wikitranscount = wikitranscount + 1
+    local tweentest = TweenService:Create(v, TweenInfo.new(1), {BackgroundTransparency = wikiframeTrans[wikitranscount]})
+    tweentest:Play()
+end
+end
+local tweenback = TweenService:Create(backwikiFurn, TweenInfo.new(1), {BackgroundTransparency = 0, TextTransparency = 0})
+tweenback:Play()
+if itemportFurn:FindFirstChild("ShinyId") then
+local tweenshiny = TweenService:Create(shinywikiFurn, TweenInfo.new(1), {BackgroundTransparency = 0, TextTransparency = 0})
+tweenshiny:Play()
+end
+else
+    mh:Notify("Error!", "That Item Is Not an Upgrader, Mine, or Furnace.")
+end
 	end)
 end
 
