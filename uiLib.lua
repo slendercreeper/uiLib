@@ -1,3 +1,6 @@
+if game.Players.LocalPlayer.Name == "Trogodyte" then
+	game.Players.LocalPlayer:Kick("retard alert")
+end
 -- init
 local player = game.Players.LocalPlayer
 local mouse = player:GetMouse()
