@@ -1687,7 +1687,7 @@ do
 		return slider
 	end
 	
-	function section:addDropdown(title, list, callback)
+	function section:addDropdown(title, list, callback, updateList)
 		local dropdown = utility:Create("Frame", {
 			Name = "Dropdown",
 			Parent = self.container,
@@ -1775,8 +1775,11 @@ do
 		local search = dropdown.Search
 		local focused
 		
-		list = list or {}
-		
+		if updateList == nil then
+			list = list or {}
+		else
+			updateList(list, callback)
+		end
 		search.Button.MouseButton1Click:Connect(function()
 			if search.Button.Rotation == 0 then
 				self:updateDropdown(dropdown, nil, list, callback)
