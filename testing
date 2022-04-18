@@ -2162,7 +2162,7 @@ do
 		if entries == 0 then
 		utility:Tween(dropdown, {Size = UDim2.new(1, 0, 0, 40)}, 0.3)
 		end
-		--[[if entries > 3 then
+		if entries > 3 then
 		
 			for i, button in pairs(dropdown.List.Frame:GetChildren()) do
 				if button:IsA("ImageButton") then
@@ -2175,7 +2175,7 @@ do
 		else
 			frame.CanvasSize = UDim2.new(0, 0, 0, 0)
 			frame.ScrollBarImageTransparency = 1
-		end--]]
+		end
 	end
 end
 
