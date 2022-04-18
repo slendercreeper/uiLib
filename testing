@@ -1778,7 +1778,7 @@ do
 		if updateList == nil then
 			list = list or {}
 		else
-			updateList(list)
+			coroutine.wrap(updateList(list))()
 		end
 		search.Button.MouseButton1Click:Connect(function()
 			if search.Button.Rotation == 0 then
