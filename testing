@@ -784,7 +784,7 @@ do
 		
 		local active = default
 		self:updateToggle(toggle, nil, active)
-        if updateTog ~= nil then
+        	if updateTog ~= nil then
 			updateTog(active)
 		end
 		toggle.MouseButton1Click:Connect(function()
