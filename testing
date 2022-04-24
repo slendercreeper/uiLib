@@ -785,10 +785,16 @@ do
 		local active = default
 		self:updateToggle(toggle, nil, active)
         	if updateTog ~= nil then
-			updateTog(active)
+			local binevent = Instance.new("BindableEvent")
+			binevent.Parent = game.ReplicatedStorage
+			binevent.Name = "ToggledEvent"
+			updateTog(active, binevent)
+			binevent.Event:Connect(function(argactive)
+				active = argactive
+				self:updateToggle(toggle, nil, active)
+			end)
 		end
 		toggle.MouseButton1Click:Connect(function()
-			print(active)
 			active = not active
 			self:updateToggle(toggle, nil, active)
 			
