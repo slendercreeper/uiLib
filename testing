@@ -726,7 +726,7 @@ do
 		return button
 	end
 	
-	function section:addToggle(title, default, callback)
+	function section:addToggle(title, default, callback, updateTog)
 		local toggle = utility:Create("ImageButton", {
 			Name = "Toggle",
 			Parent = self.container,
@@ -784,7 +784,9 @@ do
 		
 		local active = default
 		self:updateToggle(toggle, nil, active)
-		
+        if updateTog ~= nil then
+			updateTog(active)
+		end
 		toggle.MouseButton1Click:Connect(function()
 			active = not active
 			self:updateToggle(toggle, nil, active)
