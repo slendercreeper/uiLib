@@ -788,6 +788,7 @@ do
 			updateTog(active)
 		end
 		toggle.MouseButton1Click:Connect(function()
+			print(active)
 			active = not active
 			self:updateToggle(toggle, nil, active)
 			
