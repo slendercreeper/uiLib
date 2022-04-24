@@ -791,6 +791,7 @@ do
 			updateTog(active, binevent)
 			binevent.Event:Connect(function(argactive)
 				active = argactive
+				print(active)
 				self:updateToggle(toggle, nil, active)
 			end)
 		end
