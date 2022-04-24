@@ -726,7 +726,7 @@ do
 		return button
 	end
 	
-	function section:addToggle(title, default, callback)
+	function section:addToggle(title, default, callback, updateTog)
 		local toggle = utility:Create("ImageButton", {
 			Name = "Toggle",
 			Parent = self.container,
@@ -781,12 +781,34 @@ do
 		
 		table.insert(self.modules, toggle)
 		--self:Resize()
-		
+        local clickevent = Instance.new("BindableEvent")
+        clickevent.Parent = game.ReplicatedStorage
+        clickevent.Name = "ToggledClick"
+
 		local active = default
 		self:updateToggle(toggle, nil, active)
-		
+        	if updateTog ~= nil then
+			local binevent = Instance.new("BindableEvent")
+			binevent.Parent = game.ReplicatedStorage
+			binevent.Name = "ToggledEvent"
+			updateTog(active, binevent, clickevent)
+			binevent.Event:Connect(function(argactive)
+				active = argactive
+				print(active)
+				self:updateToggle(toggle, nil, active)
+			end)
+			local clickevent = Instance.new("BindableEvent")
+			clickevent.Parent = game.ReplicatedStorage
+			clickevent.Name = "ToggledClick"
+			toggle.MouseButton1Click:Connect(function()
+
+            end)
+		end
 		toggle.MouseButton1Click:Connect(function()
 			active = not active
+            if updateTog ~= nil then
+                clickevent:Fire(active)
+            end
 			self:updateToggle(toggle, nil, active)
 			
 			if callback then
