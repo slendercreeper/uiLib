@@ -994,12 +994,14 @@ do
 		end
 		
 		self.binds[keybind] = {callback = function()
-			animate()
-			
-			if callback then
-				callback(function(...)
-					self:updateKeybind(keybind, ...)
-				end)
+			if input:GetFocusedTextBox() == nil then
+				animate()
+
+                if callback then
+                    callback(function(...)
+                        self:updateKeybind(keybind, ...)
+                    end)
+                end
 			end
 		end}
 		
