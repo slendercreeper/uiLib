@@ -994,6 +994,7 @@ do
 		end
 		
 		self.binds[keybind] = {callback = function()
+            print('pressedkey1', input:GetFocusedTextBox())
 			if input:GetFocusedTextBox() == nil then
 				animate()
 
