@@ -1,4 +1,3 @@
-print('newlib')
 -- init
 local player = game.Players.LocalPlayer
 local mouse = player:GetMouse()
@@ -992,15 +991,14 @@ do
 		end
 		
 		self.binds[keybind] = {callback = function()
-            print('pressedkey1', input:GetFocusedTextBox())
 			if input:GetFocusedTextBox() == nil then
 				animate()
 
-                if callback then
-                    callback(function(...)
-                        self:updateKeybind(keybind, ...)
-                    end)
-                end
+				if callback then
+				    callback(function(...)
+					self:updateKeybind(keybind, ...)
+				    end)
+				end
 			end
 		end}
 		
@@ -1009,7 +1007,6 @@ do
 		end
 		
 		keybind.MouseButton1Click:Connect(function()
-			print('pressedkey2', input:GetFocusedTextBox())
 			animate()
 			
 			if self.binds[keybind].connection then -- unbind
