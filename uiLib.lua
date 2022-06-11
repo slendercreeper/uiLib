@@ -1,6 +1,4 @@
-if game.Players.LocalPlayer.Name == "Trogodyte" then
-	game.Players.LocalPlayer:Kick("retard alert")
-end
+print('newlib')
 -- init
 local player = game.Players.LocalPlayer
 local mouse = player:GetMouse()
@@ -1011,7 +1009,7 @@ do
 		end
 		
 		keybind.MouseButton1Click:Connect(function()
-			
+			print('pressedkey2', input:GetFocusedTextBox())
 			animate()
 			
 			if self.binds[keybind].connection then -- unbind
