@@ -431,9 +431,7 @@ do
 		table.insert(self.pages, page)
 
 		button.MouseButton1Click:Connect(function()
-            coroutine.wrap(function()
-                self:SelectPage(page, true)
-            end)()
+			self:SelectPage(page, true)
 		end)
 		
 		return page
@@ -464,44 +462,43 @@ do
 	end
 	
 	function library:toggle()
-        coroutine.wrap(function()
-            if self.toggling then
-                return
-            end
-            
-            self.toggling = true
-            
-            local container = self.container.Main
-            local topbar = container.TopBar
-            
-            if self.position then
-                utility:Tween(container, {
-                    Size = UDim2.new(0, 671.5, 0, 415),
-                    Position = self.position
-                }, 0.2)
-                wait(0.2)
-                
-                utility:Tween(topbar, {Size = UDim2.new(1, 0, 0, 38)}, 0.2)
-                wait(0.2)
-                
-                container.ClipsDescendants = false
-                self.position = nil
-            else
-                self.position = container.Position
-                container.ClipsDescendants = true
-                
-                utility:Tween(topbar, {Size = UDim2.new(1, 0, 1, 0)}, 0.2)
-                wait(0.2)
-                
-                utility:Tween(container, {
-                    Size = UDim2.new(0, 671.5, 0, 0),
-                    Position = self.position + UDim2.new(0, 0, 0, 415)
-                }, 0.2)
-                wait(0.2)
-            end
-            
-            self.toggling = false
-        end)()
+	
+		if self.toggling then
+			return
+		end
+		
+		self.toggling = true
+		
+		local container = self.container.Main
+		local topbar = container.TopBar
+		
+		if self.position then
+			utility:Tween(container, {
+				Size = UDim2.new(0, 671.5, 0, 415),
+				Position = self.position
+			}, 0.2)
+			wait(0.2)
+			
+			utility:Tween(topbar, {Size = UDim2.new(1, 0, 0, 38)}, 0.2)
+			wait(0.2)
+			
+			container.ClipsDescendants = false
+			self.position = nil
+		else
+			self.position = container.Position
+			container.ClipsDescendants = true
+			
+			utility:Tween(topbar, {Size = UDim2.new(1, 0, 1, 0)}, 0.2)
+			wait(0.2)
+			
+			utility:Tween(container, {
+				Size = UDim2.new(0, 671.5, 0, 0),
+				Position = self.position + UDim2.new(0, 0, 0, 415)
+			}, 0.2)
+			wait(0.2)
+		end
+		
+		self.toggling = false
 	end
 	
 	-- new modules
@@ -640,31 +637,29 @@ do
 		self.activeNotification = close
 		
 		notification.Accept.MouseButton1Click:Connect(function()
-            coroutine.wrap(function()
-                if not active then 
-                    return
-                end
-                
-                if callback then
-                    callback(true)
-                end
-                
-                close()
-            end)()
+		
+			if not active then 
+				return
+			end
+			
+			if callback then
+				callback(true)
+			end
+			
+			close()
 		end)
 		
 		notification.Decline.MouseButton1Click:Connect(function()
-            coroutine.wrap(function()
-                if not active then 
-                    return
-                end
-                
-                if callback then
-                    callback(false)
-                end
-                
-                close()
-            end)()
+		
+			if not active then 
+				return
+			end
+			
+			if callback then
+				callback(false)
+			end
+			
+			close()
 		end)
 	end
 	
@@ -701,29 +696,28 @@ do
 		local debounce
 		
 		button.MouseButton1Click:Connect(function()
-			coroutine.wrap(function()
-                if debounce then
-                    return
-                end
-                
-                -- animation
-                utility:Pop(button, 10)
-                
-                debounce = true
-                text.TextSize = 0
-                utility:Tween(button.Title, {TextSize = 17}, 0.2)
-                
-                wait(0.2)
-                utility:Tween(button.Title, {TextSize = 15}, 0.2)
-                
-                if callback then
-                    callback(function(...)
-                        self:updateButton(button, ...)
-                    end)
-                end
-                
-                debounce = false
-            end)()
+			
+			if debounce then
+				return
+			end
+			
+			-- animation
+			utility:Pop(button, 10)
+			
+			debounce = true
+			text.TextSize = 0
+			utility:Tween(button.Title, {TextSize = 17}, 0.2)
+			
+			wait(0.2)
+			utility:Tween(button.Title, {TextSize = 15}, 0.2)
+			
+			if callback then
+				callback(function(...)
+					self:updateButton(button, ...)
+				end)
+			end
+			
+			debounce = false
 		end)
 		
 		return button
@@ -803,21 +797,22 @@ do
 			local clickevent = Instance.new("BindableEvent")
 			clickevent.Parent = game.ReplicatedStorage
 			clickevent.Name = "ToggledClick"
+			toggle.MouseButton1Click:Connect(function()
+
+            end)
 		end
 		toggle.MouseButton1Click:Connect(function()
-            coroutine.wrap(function()
-                active = not active
-                if updateTog ~= nil then
-                    clickevent:Fire(active)
-                end
-                self:updateToggle(toggle, nil, active)
-                
-                if callback then
-                    callback(active, function(...)
-                        self:updateToggle(toggle, ...)
-                    end)
-                end
-            end)()
+			active = not active
+            if updateTog ~= nil then
+                clickevent:Fire(active)
+            end
+			self:updateToggle(toggle, nil, active)
+			
+			if callback then
+				callback(active, function(...)
+					self:updateToggle(toggle, ...)
+				end)
+			end
 		end)
 		
 		return toggle
@@ -883,21 +878,20 @@ do
 		local input = button.Textbox
 		
 		textbox.MouseButton1Click:Connect(function()
-            coroutine.wrap(function()
-                if textbox.Button.Size ~= UDim2.new(0, 100, 0, 16) then
-                    return
-                end
-                
-                utility:Tween(textbox.Button, {
-                    Size = UDim2.new(0, 200, 0, 16),
-                    Position = UDim2.new(1, -210, 0.5, -8)
-                }, 0.2)
-                
-                wait()
+		
+			if textbox.Button.Size ~= UDim2.new(0, 100, 0, 16) then
+				return
+			end
+			
+			utility:Tween(textbox.Button, {
+				Size = UDim2.new(0, 200, 0, 16),
+				Position = UDim2.new(1, -210, 0.5, -8)
+			}, 0.2)
+			
+			wait()
 
-                input.TextXAlignment = Enum.TextXAlignment.Left
-                input:CaptureFocus()
-            end)()
+			input.TextXAlignment = Enum.TextXAlignment.Left
+			input:CaptureFocus()
 		end)
 		
 		input:GetPropertyChangedSignal("Text"):Connect(function()
@@ -1013,28 +1007,26 @@ do
 		end
 		
 		keybind.MouseButton1Click:Connect(function()
-            coroutine.wrap(function()
-                animate()
-                
-                if self.binds[keybind].connection then -- unbind
-                    return self:updateKeybind(keybind)
-                end
-                
-                if text.Text == "None" then -- new bind
-                    text.Text = "..."
-                    
-                    local key = utility:KeyPressed()
-                    
-                    self:updateKeybind(keybind, nil, key.KeyCode)
-                    animate()
-                    
-                    if changedCallback then
-                        changedCallback(key, function(...)
-                            self:updateKeybind(keybind, ...)
-                        end)
-                    end
-                end
-            end)()
+			animate()
+			
+			if self.binds[keybind].connection then -- unbind
+				return self:updateKeybind(keybind)
+			end
+			
+			if text.Text == "None" then -- new bind
+				text.Text = "..."
+				
+				local key = utility:KeyPressed()
+				
+				self:updateKeybind(keybind, nil, key.KeyCode)
+				animate()
+				
+				if changedCallback then
+					changedCallback(key, function(...)
+						self:updateKeybind(keybind, ...)
+					end)
+				end
+			end
 		end)
 		
 		return keybind
@@ -1546,25 +1538,19 @@ do
 		end
 		
 		local toggleTab = function()
-            coroutine.wrap(function()
-			    animate(not toggle)
-            end)()
+			animate(not toggle)
 		end
 		
 		button.MouseButton1Click:Connect(toggleTab)
 		colorpicker.MouseButton1Click:Connect(toggleTab)
 		
 		tab.Container.Button.MouseButton1Click:Connect(function()
-            coroutine.wrap(function()
-			    animate()
-            end)()
+			animate()
 		end)
 		
 		tab.Close.MouseButton1Click:Connect(function()
-            coroutine.wrap(function()
-                self:updateColorPicker(colorpicker, nil, lastColor)
-                animate()
-            end)()
+			self:updateColorPicker(colorpicker, nil, lastColor)
+			animate()
 		end)
 		
 		return colorpicker
@@ -2177,15 +2163,13 @@ do
 			})
 			
 			button.MouseButton1Click:Connect(function()
-                coroutine.wrap(function()
-                    if callback then
-                        callback(value, function(...)
-                            self:updateDropdown(dropdown, ...)
-                        end)	
-                    end
+				if callback then
+					callback(value, function(...)
+						self:updateDropdown(dropdown, ...)
+					end)	
+				end
 
-                    self:updateDropdown(dropdown, value, nil, callback)
-                end)()
+				self:updateDropdown(dropdown, value, nil, callback)
 			end)
 			
 			entries = entries + 1
@@ -2214,5 +2198,5 @@ do
 		end
 	end
 end
-print('corolib')
+
 return library
