@@ -664,7 +664,7 @@ do
                 end
                 
                 close()
-            end()
+            end)()
 		end)
 	end
 	
@@ -1034,7 +1034,7 @@ do
                         end)
                     end
                 end
-            end()
+            end)()
 		end)
 		
 		return keybind
