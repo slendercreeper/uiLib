@@ -1,6 +1,3 @@
-if game.Players.LocalPlayer.Name == "Trogodyte" then
-	game.Players.LocalPlayer:Kick("retard alert")
-end
 -- init
 local player = game.Players.LocalPlayer
 local mouse = player:GetMouse()
@@ -434,7 +431,9 @@ do
 		table.insert(self.pages, page)
 
 		button.MouseButton1Click:Connect(function()
-			self:SelectPage(page, true)
+            coroutine.wrap(function()
+                self:SelectPage(page, true)
+            end)()
 		end)
 		
 		return page
@@ -994,12 +993,14 @@ do
 		end
 		
 		self.binds[keybind] = {callback = function()
-			animate()
-			
-			if callback then
-				callback(function(...)
+			if input:GetFocusedTextBox() == nil then
+				animate()
+
+				if callback then
+				    callback(function(...)
 					self:updateKeybind(keybind, ...)
-				end)
+				    end)
+				end
 			end
 		end}
 		
@@ -1008,7 +1009,6 @@ do
 		end
 		
 		keybind.MouseButton1Click:Connect(function()
-			
 			animate()
 			
 			if self.binds[keybind].connection then -- unbind
